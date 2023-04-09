@@ -1,0 +1,844 @@
+body {
+    background: #EEE; /* #F0F2F5 #EEE #E5E5E5 #F4F4F4 #E9EBEE */
+    font-family: Roboto, -apple-system, BlinkMacSystemFont, Roboto, 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif, "Segoe UI", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    line-height: 1.5715;
+}
+/* style checkbox */
+.table .select-checkbox:before {
+    width: 1rem !important;
+    height: 1rem !important;
+    margin-left: -0.425rem !important;
+    border: 0.1rem solid #455a64 !important;
+    margin-top: -0.465rem !important;
+}
+.table .select-checkbox:after {
+    margin-top: -0.45rem !important;
+    margin-left: -0.23rem !important;
+    font-weight: 500 !important;
+}
+/*
+    Ẩn border ô <input type="checkbox" ở các dg
+    Do trước copy bản 1 sang lười sửa js dùng luôn lại kiểu cho ô input checkbox vào <td>
+    dẫn đến border checkbox và theme đang đè vào nhau
+    https://nhanh.vn/system/merchant/slaves
+    vd: <td class="select-checkbox hover"><input type="checkbox" class="cb itemCb" data-id="9770" value="9770"></td>
+
+    Còn hiện tại dùng theme thì có thể sử dụng luôn <td>
+    https://nhanh.vn/product/item
+    vd: <td class="select-checkbox hover" data-id="1231242183"></td>
+*/
+tr .select-checkbox>input[type=checkbox] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.card {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .08);
+}
+/* Cố định icon ở các dropdown menu để nhìn text thẳng hàng hơn */
+.dropdown-header>i, .dropdown-item>i {
+	width:15px
+}
+.dropdown-toggle::after {
+    font-family: "Font Awesome 5 Pro";
+    display: inline-block;
+    border: 0;
+    vertical-align: middle;
+    font-size: 1rem;
+    margin-left: .36875rem;
+    line-height: 1;
+    content: "\f107";
+    font-weight: 300;
+}
+
+/* Tăng độ đậm cho modal backdrop */
+.modal-backdrop.show {
+    opacity: 0.8;
+}
+
+/* overider hover submenu dropdown */
+/*#menuHorizontal .dropdown-submenu:hover >.dropdown-menu {
+    display: block;
+}*/
+/* middle ô select box khi sử dụng select2 */
+.input-group .select2-container .select2-selection--single {
+    display: flex;
+    align-items: center;
+}
+
+.navTabTopFilter {
+    margin-left: -1px;
+}
+
+/* Fix filter tab without badge will show border-bottom if another tab has badge */
+.navTabTopFilter .nav-item {
+    margin-bottom: -2px
+}
+
+.nav-item-submenu > .nav-link:after {
+    content: "\f105";
+    font-family: "Font Awesome 5 Pro";
+    display: inline-block;
+    font-size: 0.8rem;
+    vertical-align: middle;
+    line-height: 1;
+    position: absolute;
+    top: .75rem;
+    margin-top: .12502rem;
+    right: 1.25rem;
+    transition: transform .25s ease-in-out, -webkit-transform .25s ease-in-out;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.navbar .fa-bars {
+    font-size: 1.2rem;
+}
+
+.dropdown-menu > .dropdown-submenu > .dropdown-item:after {
+    font-family: "Font Awesome 5 Pro";
+    content: "\f105"
+}
+
+.list-inline-dotted .list-inline-item:not(:last-child):after {
+    font-family: "Font Awesome 5 Pro";
+    content: "\f0a3";
+}
+
+.daterangepicker .table-condensed thead tr:last-child th {
+    padding-top: 0.1rem
+}
+
+.daterangepicker .table-condensed tr > td, .daterangepicker .table-condensed tr > th {
+    padding: 0.00001rem
+}
+
+.dataTable tbody .selected .select-checkbox:after {
+    font-family: "Font Awesome 5 Pro";
+    content: '\f00c';
+    font-size: .58rem;
+    line-height: 1.8;
+    margin-top: -.5rem;
+    margin-left: -.28rem;
+    font-weight: bold
+}
+
+.table-md td, .table-md th {
+    padding: 0.75rem
+}
+
+.table-md th.select-checkbox {
+    padding: 0.75rem 1rem
+}
+
+.sidebar-dark .nav-sidebar > .nav-item.nav-item-submenu ul .nav-link.active {
+    background-color: transparent;
+    color: orange;
+}
+
+#logoMain img {
+    height: 2rem
+}
+
+.alert[class*=alert-styled-].alert-warning:after, .alert[class*=alert-styled-][class*=bg-warning]:after {
+    content: "\f071";
+    font-family: "Font Awesome\ 5 Pro";
+}
+
+[data-action="collapse"]:after {
+    font-family: Font Awesome\ 5 Pro;
+    content: "\f106";
+    font-size: 1.4em;
+}
+
+.sort-order-input {
+    width: 50px;
+    height: 30px;
+    padding: .15rem
+}
+
+.hide-icon-number[type="number"]::-webkit-inner-spin-button, .hide-icon-number[type="number"]::-webkit-outer-spin-button {
+    display: none !important;
+}
+
+.validation-invalid-label:before {
+    content: "\f071";
+    font-family: Font Awesome\ 5 Pro;
+}
+
+.ck-editor__main .ck-content {
+    min-height: 120px;
+}
+
+.multiselect-item input[type=checkbox] ~ .form-check-control-indicator:after {
+    font-family: "Font Awesome 5 Pro";
+    content: '\f00c';
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.icon-cross2 {
+    font-family: "Font Awesome 5 Pro";
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    min-width: 1em;
+    display: inline-block;
+    text-align: center;
+    font-size: 1rem;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-cross2:before {
+    content: "\f00d";
+}
+
+.multiselect-filter .input-group > i {
+    font-family: "Font Awesome 5 Pro";
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    min-width: 1em;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.multiselect-filter .input-group > i.icon-search4:before {
+    content: "\f002";
+}
+
+.form-filter select,
+.custom-selectbox {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: #fff url('data:image/svg+xml;charset=UTF-8,<svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-chevron-down fa-w-14"><path fill="currentColor" d="M443.5 162.6l-7.1-7.1c-4.7-4.7-12.3-4.7-17 0L224 351 28.5 155.5c-4.7-4.7-12.3-4.7-17 0l-7.1 7.1c-4.7 4.7-4.7 12.3 0 17l211 211.1c4.7 4.7 12.3 4.7 17 0l211-211.1c4.8-4.7 4.8-12.3.1-17z" class=""></path></svg>') no-repeat right .3rem center/10px 10px;
+}
+
+.sty-none ul, .sty-none ol {
+    padding-left: 0;
+}
+
+.sty-none ul, .sty-none ol, .sty-none ul li, .sty-none ol li, .sty-none li {
+    list-style: none;
+}
+
+.form-check-switchery {
+    position: relative
+}
+
+.form-check-switchery .switchery {
+    background-color: #f9f9f9;
+    border-color: #dfdfdf;
+    box-shadow: #dfdfdf 0px 0px 0px 0px inset;
+    transition: border 0.45s ease 0s, box-shadow 0.4s ease 0s;
+}
+
+.form-check-switchery .switchery small {
+    left: 0;
+    transition: background-color 0.45s ease 0s, left 0.2s ease 0s;
+    background-color: rgb(255, 255, 255);
+}
+
+.form-check-switchery .form-check-input-switchery:checked + .switchery small {
+    left: 18px;
+    transition: background-color 0.45s ease 0s, left 0.2s ease 0s;
+}
+
+.form-check-switchery .form-check-input-switchery:checked + .switchery {
+    background-color: #9a9a9a;
+    border-color: #9a9a9a;
+    box-shadow: #9a9a9a 0px 0px 0px 10px inset;
+    transition: border 0.45s ease 0s, box-shadow 0.4s ease 0s;
+}
+
+.form-check-switchery .form-check-input-switchery:checked + .switchery-primary {
+    background-color: #2196F3;
+    border-color: #2196F3;
+    box-shadow: #2196F3 0px 0px 0px 10px inset;
+}
+
+.form-check-switchery .form-check-input-switchery:checked + .switchery-danger {
+    background-color: #EF5350;
+    border-color: #EF5350;
+    box-shadow: #EF5350 0px 0px 0px 10px inset;
+}
+
+.form-check-switchery .form-check-input-switchery:checked + .switchery-warning {
+    background-color: #FF7043;
+    border-color: #FF7043;
+    box-shadow: #FF7043 0px 0px 0px 10px inset;
+}
+
+.form-check-switchery .form-check-input-switchery:checked + .switchery-infor {
+    background-color: #00BCD4;
+    border-color: #00BCD4;
+    box-shadow: #00BCD4 0px 0px 0px 10px inset;
+}
+
+.form-check-switchery .form-check-input-switchery:checked + .switchery-success {
+    background-color: #64bd63;
+    border-color: #64bd63;
+    box-shadow: #64bd63 0px 0px 0px 10px inset;
+}
+
+.form-control {
+    background-clip: padding-box !important;
+}
+
+.img-size-max-60-60 {
+    max-width: 60px;
+    max-height: 60px;
+    object-fit: cover;
+}
+
+.font-weight-500 {
+    font-weight: 500;
+}
+
+.disable {
+    pointer-events: none;
+    opacity: .8;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+#menuHorizontal .dropdown-menu .dropdown-item.active {
+    color: #ab1d1d;
+    background: none;
+}
+
+.nav-sidebar .nav-group-sub .child-page-label a {
+    border-bottom: none;
+}
+
+.sidebar-dark .nav-sidebar > .nav-item-open > .nav-link:not(.disabled),
+.sidebar-dark .nav-sidebar > .nav-item > .nav-link.active {
+    background-color: #2d393f;
+}
+
+.pl-3rem {
+    padding-left: 3rem !important;
+}
+
+.pl-4rem {
+    padding-left: 4rem !important;
+}
+
+.pl-5rem {
+    padding-left: 5rem !important;
+}
+
+.pl-6rem {
+    padding-left: 6rem !important;
+}
+
+.imageArea .rounded-round {
+    object-fit: cover;
+}
+
+.brighttheme-icon-closer:after {
+    font-family: "Font Awesome 5 Pro";
+    font-weight: 900;
+    content: "\f00d";
+}
+
+/* fix display error on invisible element, select2 cannot calculate correct width of element (.i.e input in inactive tab) */
+.select2 {
+    flex: 1 1 auto;
+}
+
+.select2-selection--single .select2-selection__arrow:after {
+    font-family: "Font Awesome 5 Pro";
+    content: "\f107";
+    right: 0.3rem;
+    font-size: 0.9rem;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    top: 5px
+}
+
+.select2-search--dropdown:after {
+    font-family: "Font Awesome 5 Pro";
+    content: "\f002";
+    position: absolute;
+    top: 50%;
+    left: calc(100% - 30px);
+    right: 1.875rem;
+}
+
+.select2-container .select2-selection--single {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    height: calc(1.5385em + .875rem + 2px) !important;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.select2-container--default .select2-selection--single {
+    line-height: 24px;
+    padding-left: .4375rem;
+}
+
+.select2-container--default .select2-results > .select2-results__options {
+    max-height: 300px
+}
+
+.select2-dropdown {
+    border-radius: 0 !important
+}
+
+.select2-container--default .select2-selection--single {
+    line-height: 22px;
+}
+
+.select2-container .select2-selection--single {
+    height: calc(1.5385em + .875rem + 1px) !important;
+}
+
+/* custom display element filter select2 */
+.form-filter .select2-container {
+    width: 100% !important;
+}
+
+.form-filter .select2-selection--single .select2-selection__arrow:after {
+    font-size: 1.04rem;
+    font-weight: 100;
+}
+
+.form-filter .select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 20px;
+}
+
+.brighttheme-icon-sticker:after {
+    font-family: "Font Awesome 5 Pro";
+    content: "\f111";
+}
+
+.brighttheme-icon-sticker.brighttheme-icon-stuck:after {
+    content: "\f111";
+    font-weight: 900;
+}
+
+.alert-warning {
+    background-color: #fcf8e3;
+}
+
+.nav-sidebar .nav-item:not(.nav-item-header):first-child {
+    padding-top: 0;
+}
+
+.nav-sidebar .nav-link {
+    padding: .71rem 1.25rem;
+    font-size: 0.875rem;
+}
+
+#showHideMainMenu {
+    z-index: 10;
+    color: #c5c5c5 !important;
+    font-size: 1rem;
+    width: 16px;
+}
+
+#showHideMainMenu > i {
+    background: #263238;
+}
+
+#sidebar-left-border {
+    border-color: #c5c5c5;
+}
+
+.sidebar-xs #showHideMainMenu > i {
+    transform: rotate(180deg);
+}
+
+.sidebar-xs .sidebar-main .nav-sidebar > .nav-item-submenu > .nav-group-sub[data-submenu-title]:before {
+    text-transform: uppercase;
+}
+
+.breadcrumb-line:last-child {
+    margin-bottom: 0px;
+}
+
+/* fix width image bootstrap-autocomplete */
+.bootstrap-autocomplete > .dropdown-item .boxImage {
+    width: 45px;
+}
+.bootstrap-autocomplete > .dropdown-item img {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+#tbLoadProduct + .bootstrap-autocomplete > .dropdown-item,
+.suggestProductBox + .bootstrap-autocomplete > .dropdown-item {
+    max-height: 80px;
+    padding: 0 .125rem .125rem .125rem !important;
+    margin: 0 !important;
+    overflow: hidden;
+}
+
+#tbLoadProduct + .bootstrap-autocomplete,
+.suggestProductBox + .bootstrap-autocomplete {
+    min-width: 350px !important;
+    overflow-x: auto;
+    width: auto !important;
+    max-width: 85vw;
+}
+
+.bootstrap-autocomplete {
+    max-height: 640px;
+    overflow-y: auto;
+}
+
+/* fix màu nền cho autoComplete dễ nhìn hơn */
+.bootstrap-autocomplete .dropdown-item.active {
+    background-color: #EEE;
+}
+
+.dataTables_filter > label:after {
+    content: "";
+}
+
+.dataTable thead .sorting:before {
+    content: "";
+}
+
+/*
+ fix style order khi đơn hàng có nhiều sản phẩm
+ khi checked hoặc hover thì cần thêm background
+ cho các tr chứa sản phẩm tiếp theo của đơn hàng đó
+*/
+tr.sub-item-row-selected {
+    background-color: #e8f5e9;
+}
+
+tr td.hover {
+    background-color: #f0f4f6;
+}
+
+table {
+    table-layout: auto !important;
+}
+
+.table-rowDark {
+    background-color: rgba(0, 0, 0, .02);
+}
+
+/* fix transition hover menu */
+#menuHorizontal .dropdown-item {
+    transition: none !important;
+}
+
+#menuHorizontal .dropdown-menu > .dropdown-submenu.show > .dropdown-item {
+    background: none;
+}
+
+#menuHorizontal .dropdown-menu > .dropdown-submenu.show:hover > .dropdown-item {
+    background: #f5f5f5
+}
+
+/* override .ranges daterange picker của theme
+   chỉ dùng mặc định của lib
+ */
+.ranges {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+/*
+    fix overflow trên desktop cần để visible
+    Vì có nhiều trường hợp table chỉ có 1 record
+    khi click vào action dropdown sẽ bị che, ví dụ như lọc 1 ID đơn hàng
+    cái overflow này chỉ cần dùng trên mobile
+*/
+.table-responsive {
+    overflow-x: inherit;
+}
+
+@media (max-width: 767px) {
+    .table-responsive {
+        overflow-x: auto;
+    }
+    .tabs-scroll-xs {
+        display: flex;
+        flex-wrap: inherit;
+        overflow: auto;
+        position: relative;
+        padding-bottom: 20px;
+        border-bottom: none;
+    }
+    .tabs-scroll-xs:before {
+        position: absolute;
+        bottom: 4px;
+        left: 0;
+        width: 100%;
+        height: 10px;
+        z-index: 16;
+        content: 'Vuốt sang để xem thêm menu';
+        display: block;
+        font-size: 11px;
+        font-style: italic;
+        opacity: .8;
+        color: #2196f3;
+    }
+    .tabs-scroll-xs::-webkit-scrollbar {
+        display: none !important;
+    }
+    .tabs-scroll-xs li {
+        white-space: nowrap;
+        background: #f7f7f7;
+        border-bottom: 1px solid #ddd;
+    }
+    #tbLoadProduct + .bootstrap-autocomplete,
+    .suggestProductBox + .bootstrap-autocomplete {
+        max-width: 96vw;
+        left: 0 !important;
+    }
+    .bootstrap-autocomplete > .dropdown-item div.text-nowrap.w-100 {
+        white-space: initial !important;
+    }
+
+}
+
+/* Tối ưu hiển thị chọn ngày tháng trên mobile */
+@media (max-width: 670px) {
+    .daterangepicker {
+        width: 100%;
+    }
+    .daterangepicker.opensright:before, .daterangepicker.opensright:after {
+        display: none;
+    }
+    .daterangepicker .drp-calendar {
+        max-width: 100%;
+    }
+
+    /* @link: https://work.1app.vn/o-hien-thi-tren-ban-mobile-bi-loi.t501183.p5002?businessId=124 */
+    #orderScreen #boxProducts .table-responsive {
+        min-height: 450px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .sidebar {
+        width: 15.875rem
+    }
+    .breadcrumb-item {
+        padding: .65rem 0; /* Fix .6125rem => .65rem cho cân với sub menu đầu tiên khi dùng menu dọc */
+    }
+    .nav-sidebar .nav-group-sub .child-page-label a {
+        border-bottom: 1px solid #ccc;
+        padding-bottom: .6rem;
+    }
+    .sidebar-dark .nav-sidebar > .nav-item-submenu > .nav-group-sub {
+        position: absolute;
+        width: 79%;
+        min-height: 95%;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        background: #2d393f;
+    }
+    .nav-sidebar > li > .nav-group-sub > li >.nav-link {
+        padding-left: 1rem;
+    }
+    .nav-sidebar .nav-group-sub .nav-group-sub > li > a {
+        padding-left: 2rem;
+    }
+    .sidebar-xs .sidebar-main .nav-sidebar > .nav-item-submenu > .nav-group-sub[data-submenu-title]:before,
+    .sidebar-xs .sidebar-dark .nav-sidebar > .nav-item-submenu .nav-group-sub.show-nav-sub {
+        display: none;
+    }
+    .sidebar-xs .sidebar-dark .nav-sidebar > .nav-item-submenu:hover .nav-group-sub.show-nav-sub,
+    .sidebar-dark .nav-sidebar > .nav-item-submenu .nav-group-sub.show-nav-sub {
+        display: block;
+    }
+    .nav-sidebar > .nav-item-submenu.nav-item-open > .nav-link:after {
+        -webkit-transform: rotate(90deg);
+        transform: rotate(0deg)
+    }
+    .sidebar-dark .nav-sidebar > .nav-item {
+        margin-bottom: 0;
+    }
+    .sidebar-xs .nav-sidebar > .nav-item-submenu > .nav-group-sub::-webkit-scrollbar {
+        width: 9px;
+    }
+    .sidebar-xs .nav-sidebar > .nav-item-submenu > .nav-group-sub::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    .sidebar-xs .nav-sidebar > .nav-item-submenu > .nav-group-sub::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+    .sidebar-xs .nav-sidebar > .nav-item-submenu > .nav-group-sub::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+    .sidebar-xs .nav-sidebar > .nav-item-submenu > .nav-group-sub {
+        height: auto !important;
+        max-height: 550px;
+        overflow-y: auto;
+    }
+}
+
+/*
+CSS group add Batch
+*/
+.psBatchGroup .productBatchTxt{
+    max-width: 80px;
+    height: 32px;
+    padding: 2px 3px;
+    font-size: .85rem !important;
+}
+.psBatchGroup .addQuickProductBatchBtn{
+    display: -ms-inline-flexbox !important;
+    display: inline-flex !important;
+    -ms-flex-pack: center !important;
+    justify-content: center !important;
+    -ms-flex-align: center !important;
+    align-items: center !important;
+    color: #fff !important;
+    min-width: 18px;
+}
+.batchItem .batchInfor .removeBatch{
+    cursor: pointer;
+    margin-left: .3125rem;
+}
+/*
+CSS group add Batch
+*/
+.psBatchGroup .productBatchTxt{
+    max-width: 80px;
+    height: 32px;
+    padding: 2px 3px;
+    font-size: .85rem !important;
+}
+.psBatchGroup .addQuickProductBatchBtn{
+    display: -ms-inline-flexbox !important;
+    display: inline-flex !important;
+    -ms-flex-pack: center !important;
+    justify-content: center !important;
+    -ms-flex-align: center !important;
+    align-items: center !important;
+    color: #fff !important;
+    min-width: 18px;
+    cursor: pointer;
+}
+.batchItem .batchInfor .removeBatch{
+    cursor: pointer;
+    margin-left: .3125rem;
+}
+
+.min-height-5rem{
+    min-height: 5rem;
+}
+.d-hide{
+    display: none;
+}
+
+
+/*
+* ===========================================================================
+* =============================== CSS TAG NAME ==============================
+* ===========================================================================
+*/
+#boxLabels .btnGroupTags{
+    position: initial !important;
+}
+#boxLabels .btnGroupTags *[data-toggle="dropdown"]{
+    border: none !important;
+    box-shadow: none !important;
+    background-color: #fafafa;
+    outline: none !important;
+    cursor: pointer;
+}
+#boxLabels .btnGroupTags *[data-toggle="dropdown"]:after{
+    display: none !important;
+}
+#boxLabels .btnGroupTags .dropdown-menu{
+    min-width: 400px;
+    top: 46px !important;
+    left: auto !important;
+    right: 0 !important;
+    transform: unset !important;
+    border: 1px solid rgb(0 0 0 / 6%);
+}
+#boxLabels .btnGroupTags .dropdown-menu .dropTags{
+    max-height: 150px;
+    overflow-y: auto;
+}
+#boxLabels .btnGroupTags .dropdown-menu .dropTags::-webkit-scrollbar-track {
+    /*box-shadow: inset 0 0 5px grey;*/
+    border-radius: 15px;
+}
+#boxLabels .btnGroupTags .dropdown-menu .dropTags::-webkit-scrollbar-thumb {
+    border-radius: 15px;
+}
+#boxLabels .btnGroupTags .dropdown-menu .dropdown-item{
+    margin: 0;
+    font-size: 14px;
+}
+#boxLabels .btn-tag-check-all{
+    margin: -8px .625rem 0 0 !important;
+}
+#boxLabels .btnGroupTags .dropdown-menu .dropdown-item i{
+    margin-top: -2px !important;
+}
+#boxLabels .btn-tag-check-all,
+#boxLabels .btnGroupTags .dropdown-menu .dropdown-item i{
+    font-size: 18px;
+    margin-right: 0.625rem!important;
+}
+#boxLabels .btnGroupTags .dropdown-menu .dropdown-item.active,
+#boxLabels .btnGroupTags .dropdown-menu .dropdown-item:focus,
+#boxLabels .btnGroupTags .dropdown-menu  .dropdown-item:hover{
+    background-color: #F0F7FF !important;
+    color: #333333 !important;
+}
+#boxLabels .btnGroupTags .dropdown-menu .dropdown-item.active i,
+#boxLabels .btnGroupTags .dropdown-menu .dropdown-item:focus i,
+#boxLabels .btnGroupTags .dropdown-menu  .dropdown-item:hover i,
+#boxLabels .btnGroupTags .btn-tag-check-all.active{
+    color: #2196F3 !important;
+}
+#boxLabels .btnGroupTags .btn-tag-check-all.active:before,
+#boxLabels .btnGroupTags .dropdown-menu .dropdown-item.active i:before{
+    content: "\f14a";
+}
+#boxLabels .btnGroupTags .btnActionTags .btn{
+    font-size: 14px;
+    padding: 0.19rem 0.875rem;
+}
+#boxLabels .btnGroupTags .dropdown-filter{
+    padding: 0 15px;
+}
+#boxLabels .btnGroupTags .has-search input{
+    padding-left: 2.3rem;
+}
+@media screen and (min-width: 1200px) {
+    #assignTagOrdersModal .modal-dialog , #assignLabelModal .modal-dialog{
+        align-items: start !important;
+        padding-top: 8% !important;
+    }
+}

@@ -1,0 +1,477 @@
+
+/*---- Theme red -----*/
+/*-- left menu background: d9d9d9 | D6D6D6 | c8c8c8 | 3F3F3F | 324148 --*/
+.theme-1 .navbar-dark { background: #ab1d1d}
+.theme-1 .sidebar-dark,
+.mm-menu {
+    background: #d9d9d9;
+    color: #333;
+    --mm-color-background: #d9d9d9;
+    --mm-color-text: #333;
+}
+.theme-1 .sidebar-dark .nav-sidebar .nav-link,
+.theme-1 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar .nav-link,
+.theme-1 .sidebar-dark .nav-sidebar .nav-link:not(.disabled):hover,
+.theme-1 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar .nav-link:not(.disabled):hover,
+.theme-1 .sidebar-dark .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-1 .sidebar-dark .nav-sidebar>.nav-item>.nav-link.active,
+.theme-1 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-1 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item>.nav-link.active {
+    color: #333;
+}
+.theme-1 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-submenu>.nav-group-sub {
+    background: #d8d7d7;
+}
+.theme-1 .sidebar-dark .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-1 .sidebar-dark .nav-sidebar>.nav-item>.nav-link.active,
+.theme-1 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-1 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item>.nav-link.active {
+    background: #cbd2d2;
+}
+
+.theme-1 .sidebar-dark .nav-sidebar .nav-item-open>.nav-link:not(.disabled),
+.theme-1 .sidebar-dark .nav-sidebar>.nav-item-expanded:not(.nav-item-open)>.nav-link,
+.theme-1 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar .nav-item-open>.nav-link:not(.disabled),
+.theme-1 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-expanded:not(.nav-item-open)>.nav-link {
+    color: #333;
+    background: #cbd2d2;
+}
+.theme-1 .sidebar-dark .nav-sidebar>.nav-item.nav-item-submenu ul .nav-link.active {
+    color: #ab1d1d;
+}
+.theme-1 #showHideMainMenu i {
+    background: #d9d9d9;
+    color: #333 !important;
+}
+.theme-1 .sidebar-dark .nav-sidebar>.nav-item-submenu>.nav-group-sub {
+    background: #e0e0e0;
+}
+@media (min-width: 768px) {
+    .theme-1.sidebar-xs .sidebar-main.sidebar-dark .nav-sidebar > .nav-item-submenu > .nav-group-sub {
+        background: #e3e0e0;
+    }
+}
+
+/*---- Theme 3 -----*/
+/*-- left menu background: d9d9d9 | D6D6D6 | c8c8c8 | 3F3F3F | 324148 --*/
+.theme-3 .navbar-dark { background: #27ae61}
+.theme-3 .sidebar-dark,
+.mm-menu {
+    background: #d9d9d9;
+    color: #333;
+    --mm-color-background: #d9d9d9;
+    --mm-color-text: #333;
+}
+.theme-3 .sidebar-dark .nav-sidebar .nav-link,
+.theme-3 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar .nav-link,
+.theme-3 .sidebar-dark .nav-sidebar .nav-link:not(.disabled):hover,
+.theme-3 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar .nav-link:not(.disabled):hover,
+.theme-3 .sidebar-dark .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-3 .sidebar-dark .nav-sidebar>.nav-item>.nav-link.active,
+.theme-3 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-3 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item>.nav-link.active {
+    color: #333;
+}
+.theme-3 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-submenu>.nav-group-sub {
+    background: #d8d7d7;
+}
+.theme-3 .sidebar-dark .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-3 .sidebar-dark .nav-sidebar>.nav-item>.nav-link.active,
+.theme-3 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-3 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item>.nav-link.active {
+    background: #cbd2d2;
+}
+
+.theme-3 .sidebar-dark .nav-sidebar .nav-item-open>.nav-link:not(.disabled),
+.theme-3 .sidebar-dark .nav-sidebar>.nav-item-expanded:not(.nav-item-open)>.nav-link,
+.theme-3 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar .nav-item-open>.nav-link:not(.disabled),
+.theme-3 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-expanded:not(.nav-item-open)>.nav-link {
+    color: #333;
+    background: #cbd2d2;
+}
+.theme-3 .sidebar-dark .nav-sidebar>.nav-item.nav-item-submenu ul .nav-link.active {
+    color: #27ae61;
+}
+.theme-3 #showHideMainMenu i {
+    background: #d9d9d9;
+    color: #333 !important;
+}
+.theme-3 .sidebar-dark .nav-sidebar>.nav-item-submenu>.nav-group-sub {
+    background: #e0e0e0;
+}
+@media (min-width: 768px) {
+    .theme-3.sidebar-xs .sidebar-main.sidebar-dark .nav-sidebar > .nav-item-submenu > .nav-group-sub {
+        background: #e3e0e0;
+    }
+}
+
+/*---- Theme 4 -----*/
+/*-- left menu background: d9d9d9 | D6D6D6 | c8c8c8 | 3F3F3F | 324148 --*/
+.theme-4 .navbar-dark { background: #0090da}
+.theme-4 .sidebar-dark,
+.mm-menu {
+    background: #d9d9d9;
+    color: #333;
+    --mm-color-background: #d9d9d9;
+    --mm-color-text: #333;
+}
+.theme-4 .sidebar-dark .nav-sidebar .nav-link,
+.theme-4 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar .nav-link,
+.theme-4 .sidebar-dark .nav-sidebar .nav-link:not(.disabled):hover,
+.theme-4 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar .nav-link:not(.disabled):hover,
+.theme-4 .sidebar-dark .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-4 .sidebar-dark .nav-sidebar>.nav-item>.nav-link.active,
+.theme-4 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-4 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item>.nav-link.active {
+    color: #333;
+}
+.theme-4 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-submenu>.nav-group-sub {
+    background: #d8d7d7;
+}
+.theme-4 .sidebar-dark .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-4 .sidebar-dark .nav-sidebar>.nav-item>.nav-link.active,
+.theme-4 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-4 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item>.nav-link.active {
+    background: #cbd2d2;
+}
+
+.theme-4 .sidebar-dark .nav-sidebar .nav-item-open>.nav-link:not(.disabled),
+.theme-4 .sidebar-dark .nav-sidebar>.nav-item-expanded:not(.nav-item-open)>.nav-link,
+.theme-4 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar .nav-item-open>.nav-link:not(.disabled),
+.theme-4 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-expanded:not(.nav-item-open)>.nav-link {
+    color: #333;
+    background: #cbd2d2;
+}
+.theme-4 .sidebar-dark .nav-sidebar>.nav-item.nav-item-submenu ul .nav-link.active {
+    color: #0090da;
+}
+.theme-4 #showHideMainMenu i {
+    background: #d9d9d9;
+    color: #333 !important;
+}
+.theme-4 .sidebar-dark .nav-sidebar>.nav-item-submenu>.nav-group-sub {
+    background: #e0e0e0;
+}
+@media (min-width: 768px) {
+    .theme-4.sidebar-xs .sidebar-main.sidebar-dark .nav-sidebar > .nav-item-submenu > .nav-group-sub {
+        background: #e3e0e0;
+    }
+}
+
+/*---- Theme 5 -----*/
+/*-- left menu background: d9d9d9 | D6D6D6 | c8c8c8 | 3F3F3F | 324148 --*/
+.theme-5 .navbar-dark { background: #4b6580}
+.theme-5 .sidebar-dark,
+.mm-menu {
+    background: #d9d9d9;
+    color: #333;
+    --mm-color-background: #d9d9d9;
+    --mm-color-text: #333;
+}
+.theme-5 .sidebar-dark .nav-sidebar .nav-link,
+.theme-5 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar .nav-link,
+.theme-5 .sidebar-dark .nav-sidebar .nav-link:not(.disabled):hover,
+.theme-5 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar .nav-link:not(.disabled):hover,
+.theme-5 .sidebar-dark .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-5 .sidebar-dark .nav-sidebar>.nav-item>.nav-link.active,
+.theme-5 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-5 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item>.nav-link.active {
+    color: #333;
+}
+.theme-5 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-submenu>.nav-group-sub {
+    background: #d8d7d7;
+}
+.theme-5 .sidebar-dark .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-5 .sidebar-dark .nav-sidebar>.nav-item>.nav-link.active,
+.theme-5 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-5 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item>.nav-link.active {
+    background: #cbd2d2;
+}
+
+.theme-5 .sidebar-dark .nav-sidebar .nav-item-open>.nav-link:not(.disabled),
+.theme-5 .sidebar-dark .nav-sidebar>.nav-item-expanded:not(.nav-item-open)>.nav-link,
+.theme-5 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar .nav-item-open>.nav-link:not(.disabled),
+.theme-5 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-expanded:not(.nav-item-open)>.nav-link {
+    color: #333;
+    background: #cbd2d2;
+}
+.theme-5 .sidebar-dark .nav-sidebar>.nav-item.nav-item-submenu ul .nav-link.active {
+    color: #4b6580;
+}
+.theme-5 #showHideMainMenu i {
+    background: #d9d9d9;
+    color: #333 !important;
+}
+.theme-5 .sidebar-dark .nav-sidebar>.nav-item-submenu>.nav-group-sub {
+    background: #e0e0e0;
+}
+@media (min-width: 768px) {
+    .theme-5.sidebar-xs .sidebar-main.sidebar-dark .nav-sidebar > .nav-item-submenu > .nav-group-sub {
+        background: #e3e0e0;
+    }
+}
+
+/*---- Theme 6 -----*/
+/*-- left menu background: d9d9d9 | D6D6D6 | c8c8c8 | 3F3F3F | 324148 --*/
+.theme-6 .navbar-dark { background: #9b58b5}
+.theme-6 .sidebar-dark,
+.mm-menu {
+    background: #d9d9d9;
+    color: #333;
+    --mm-color-background: #d9d9d9;
+    --mm-color-text: #333;
+}
+.theme-6 .sidebar-dark .nav-sidebar .nav-link,
+.theme-6 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar .nav-link,
+.theme-6 .sidebar-dark .nav-sidebar .nav-link:not(.disabled):hover,
+.theme-6 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar .nav-link:not(.disabled):hover,
+.theme-6 .sidebar-dark .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-6 .sidebar-dark .nav-sidebar>.nav-item>.nav-link.active,
+.theme-6 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-6 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item>.nav-link.active {
+    color: #333;
+}
+.theme-6 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-submenu>.nav-group-sub {
+    background: #d8d7d7;
+}
+.theme-6 .sidebar-dark .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-6 .sidebar-dark .nav-sidebar>.nav-item>.nav-link.active,
+.theme-6 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-6 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item>.nav-link.active {
+    background: #cbd2d2;
+}
+
+.theme-6 .sidebar-dark .nav-sidebar .nav-item-open>.nav-link:not(.disabled),
+.theme-6 .sidebar-dark .nav-sidebar>.nav-item-expanded:not(.nav-item-open)>.nav-link,
+.theme-6 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar .nav-item-open>.nav-link:not(.disabled),
+.theme-6 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-expanded:not(.nav-item-open)>.nav-link {
+    color: #333;
+    background: #cbd2d2;
+}
+.theme-6 .sidebar-dark .nav-sidebar>.nav-item.nav-item-submenu ul .nav-link.active {
+    color: #9b58b5;
+}
+.theme-6 #showHideMainMenu i {
+    background: #d9d9d9;
+    color: #333 !important;
+}
+.theme-6 .sidebar-dark .nav-sidebar>.nav-item-submenu>.nav-group-sub {
+    background: #e0e0e0;
+}
+@media (min-width: 768px) {
+    .theme-6.sidebar-xs .sidebar-main.sidebar-dark .nav-sidebar > .nav-item-submenu > .nav-group-sub {
+        background: #e3e0e0;
+    }
+}
+
+/*---- Theme 7 -----*/
+/*-- left menu background: d9d9d9 | D6D6D6 | c8c8c8 | 3F3F3F | 324148 --*/
+.theme-7 .navbar-dark { background: #6e9992}
+.theme-7 .sidebar-dark,
+.mm-menu {
+    background: #d9d9d9;
+    color: #333;
+    --mm-color-background: #d9d9d9;
+    --mm-color-text: #333;
+}
+.theme-7 .sidebar-dark .nav-sidebar .nav-link,
+.theme-7 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar .nav-link,
+.theme-7 .sidebar-dark .nav-sidebar .nav-link:not(.disabled):hover,
+.theme-7 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar .nav-link:not(.disabled):hover,
+.theme-7 .sidebar-dark .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-7 .sidebar-dark .nav-sidebar>.nav-item>.nav-link.active,
+.theme-7 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-7 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item>.nav-link.active {
+    color: #333;
+}
+.theme-7 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-submenu>.nav-group-sub {
+    background: #d8d7d7;
+}
+.theme-7 .sidebar-dark .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-7 .sidebar-dark .nav-sidebar>.nav-item>.nav-link.active,
+.theme-7 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-7 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item>.nav-link.active {
+    background: #cbd2d2;
+}
+
+.theme-7 .sidebar-dark .nav-sidebar .nav-item-open>.nav-link:not(.disabled),
+.theme-7 .sidebar-dark .nav-sidebar>.nav-item-expanded:not(.nav-item-open)>.nav-link,
+.theme-7 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar .nav-item-open>.nav-link:not(.disabled),
+.theme-7 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-expanded:not(.nav-item-open)>.nav-link {
+    color: #333;
+    background: #cbd2d2;
+}
+.theme-7 .sidebar-dark .nav-sidebar>.nav-item.nav-item-submenu ul .nav-link.active {
+    color: #6e9992;
+}
+.theme-7 #showHideMainMenu i {
+    background: #d9d9d9;
+    color: #333 !important;
+}
+.theme-7 .sidebar-dark .nav-sidebar>.nav-item-submenu>.nav-group-sub {
+    background: #e0e0e0;
+}
+@media (min-width: 768px) {
+    .theme-7.sidebar-xs .sidebar-main.sidebar-dark .nav-sidebar > .nav-item-submenu > .nav-group-sub {
+        background: #e3e0e0;
+    }
+}
+
+/*---- Theme 8 -----*/
+/*-- left menu background: d9d9d9 | D6D6D6 | c8c8c8 | 3F3F3F | 324148 --*/
+.theme-8 .navbar-dark { background: #16a086}
+.theme-8 .sidebar-dark,
+.mm-menu {
+    background: #d9d9d9;
+    color: #333;
+    --mm-color-background: #d9d9d9;
+    --mm-color-text: #333;
+}
+.theme-8 .sidebar-dark .nav-sidebar .nav-link,
+.theme-8 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar .nav-link,
+.theme-8 .sidebar-dark .nav-sidebar .nav-link:not(.disabled):hover,
+.theme-8 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar .nav-link:not(.disabled):hover,
+.theme-8 .sidebar-dark .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-8 .sidebar-dark .nav-sidebar>.nav-item>.nav-link.active,
+.theme-8 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-8 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item>.nav-link.active {
+    color: #333;
+}
+.theme-8 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-submenu>.nav-group-sub {
+    background: #d8d7d7;
+}
+.theme-8 .sidebar-dark .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-8 .sidebar-dark .nav-sidebar>.nav-item>.nav-link.active,
+.theme-8 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-8 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item>.nav-link.active {
+    background: #cbd2d2;
+}
+
+.theme-8 .sidebar-dark .nav-sidebar .nav-item-open>.nav-link:not(.disabled),
+.theme-8 .sidebar-dark .nav-sidebar>.nav-item-expanded:not(.nav-item-open)>.nav-link,
+.theme-8 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar .nav-item-open>.nav-link:not(.disabled),
+.theme-8 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-expanded:not(.nav-item-open)>.nav-link {
+    color: #333;
+    background: #cbd2d2;
+}
+.theme-8 .sidebar-dark .nav-sidebar>.nav-item.nav-item-submenu ul .nav-link.active {
+    color: #16a086;
+}
+.theme-8 #showHideMainMenu i {
+    background: #d9d9d9;
+    color: #333 !important;
+}
+.theme-8 .sidebar-dark .nav-sidebar>.nav-item-submenu>.nav-group-sub {
+    background: #e0e0e0;
+}
+@media (min-width: 768px) {
+    .theme-8.sidebar-xs .sidebar-main.sidebar-dark .nav-sidebar > .nav-item-submenu > .nav-group-sub {
+        background: #e3e0e0;
+    }
+}
+
+/*---- Theme 9 -----*/
+/*-- left menu background: d9d9d9 | D6D6D6 | c8c8c8 | 3F3F3F | 324148 --*/
+.theme-9 .navbar-dark { background: #e67e22}
+.theme-9 .sidebar-dark,
+.mm-menu {
+    background: #d9d9d9;
+    color: #333;
+    --mm-color-background: #d9d9d9;
+    --mm-color-text: #333;
+}
+.theme-9 .sidebar-dark .nav-sidebar .nav-link,
+.theme-9 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar .nav-link,
+.theme-9 .sidebar-dark .nav-sidebar .nav-link:not(.disabled):hover,
+.theme-9 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar .nav-link:not(.disabled):hover,
+.theme-9 .sidebar-dark .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-9 .sidebar-dark .nav-sidebar>.nav-item>.nav-link.active,
+.theme-9 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-9 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item>.nav-link.active {
+    color: #333;
+}
+.theme-9 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-submenu>.nav-group-sub {
+    background: #d8d7d7;
+}
+.theme-9 .sidebar-dark .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-9 .sidebar-dark .nav-sidebar>.nav-item>.nav-link.active,
+.theme-9 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-9 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item>.nav-link.active {
+    background: #cbd2d2;
+}
+
+.theme-9 .sidebar-dark .nav-sidebar .nav-item-open>.nav-link:not(.disabled),
+.theme-9 .sidebar-dark .nav-sidebar>.nav-item-expanded:not(.nav-item-open)>.nav-link,
+.theme-9 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar .nav-item-open>.nav-link:not(.disabled),
+.theme-9 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-expanded:not(.nav-item-open)>.nav-link {
+    color: #333;
+    background: #cbd2d2;
+}
+.theme-9 .sidebar-dark .nav-sidebar>.nav-item.nav-item-submenu ul .nav-link.active {
+    color: #e67e22;
+}
+.theme-9 #showHideMainMenu i {
+    background: #d9d9d9;
+    color: #333 !important;
+}
+.theme-9 .sidebar-dark .nav-sidebar>.nav-item-submenu>.nav-group-sub {
+    background: #e0e0e0;
+}
+@media (min-width: 768px) {
+    .theme-9.sidebar-xs .sidebar-main.sidebar-dark .nav-sidebar > .nav-item-submenu > .nav-group-sub {
+        background: #e3e0e0;
+    }
+}
+
+/*---- Theme 10 -----*/
+/*-- left menu background: d9d9d9 | D6D6D6 | c8c8c8 | 3F3F3F | 324148 --*/
+.theme-10 .navbar-dark { background: #d73c8a}
+.theme-10 .sidebar-dark,
+.mm-menu {
+    background: #d9d9d9;
+    color: #333;
+    --mm-color-background: #d9d9d9;
+    --mm-color-text: #333;
+}
+.theme-10 .sidebar-dark .nav-sidebar .nav-link,
+.theme-10 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar .nav-link,
+.theme-10 .sidebar-dark .nav-sidebar .nav-link:not(.disabled):hover,
+.theme-10 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar .nav-link:not(.disabled):hover,
+.theme-10 .sidebar-dark .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-10 .sidebar-dark .nav-sidebar>.nav-item>.nav-link.active,
+.theme-10 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-10 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item>.nav-link.active {
+    color: #333;
+}
+.theme-10 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-submenu>.nav-group-sub {
+    background: #d8d7d7;
+}
+.theme-10 .sidebar-dark .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-10 .sidebar-dark .nav-sidebar>.nav-item>.nav-link.active,
+.theme-10 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-open>.nav-link:not(.disabled),
+.theme-10 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item>.nav-link.active {
+    background: #cbd2d2;
+}
+
+.theme-10 .sidebar-dark .nav-sidebar .nav-item-open>.nav-link:not(.disabled),
+.theme-10 .sidebar-dark .nav-sidebar>.nav-item-expanded:not(.nav-item-open)>.nav-link,
+.theme-10 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar .nav-item-open>.nav-link:not(.disabled),
+.theme-10 .sidebar-light .card[class*=bg-]:not(.bg-light):not(.bg-white):not(.bg-transparent) .nav-sidebar>.nav-item-expanded:not(.nav-item-open)>.nav-link {
+    color: #333;
+    background: #cbd2d2;
+}
+.theme-10 .sidebar-dark .nav-sidebar>.nav-item.nav-item-submenu ul .nav-link.active {
+    color: #d73c8a;
+}
+.theme-10 #showHideMainMenu i {
+    background: #d9d9d9;
+    color: #333 !important;
+}
+.theme-10 .sidebar-dark .nav-sidebar>.nav-item-submenu>.nav-group-sub {
+    background: #e0e0e0;
+}
+@media (min-width: 768px) {
+    .theme-10.sidebar-xs .sidebar-main.sidebar-dark .nav-sidebar > .nav-item-submenu > .nav-group-sub {
+        background: #e3e0e0;
+    }
+}

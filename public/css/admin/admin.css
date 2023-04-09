@@ -1,0 +1,391 @@
+@charset "UTF-8";
+body{background:#ececec}
+img {max-width: 100% }
+.openDropdown {display: none !important;}
+.openDropdown.active{display: block !important;}
+.openDropdown .dropdown-item.active{background: #f5f5f5;color: #333}
+.sidebar-mobile-main .sidebar {display: block !important;}
+#header .navbar-brand {padding-top: 0; padding-bottom: 0}
+.fa-skype{color: #00aff0}
+.nav-group-sub .nav-link{padding-left: 3.13rem}
+.nav-group-sub .nav-item-submenu>.nav-link:after {top: 0.8rem}
+.nav-item-submenu>.nav-link:after{top: 0.9rem}
+.nav-sidebar .nav-link i{font-size: 1rem;width: 16px}
+.table-tiny td, .table-tiny th {padding: .5rem}
+.table-tiny th.select-checkbox {min-width:32px}
+.table>thead>tr {background: #F5F5F5}
+.table thead th {text-align:center}
+.table>thead>tr>th {background: #eee}
+/* sticky table head */
+.table.stickyHeader > thead {
+    position: -webkit-sticky;
+    position: sticky;
+    top: -1px;
+    background: #eee;
+    z-index: 10;
+}
+.table tbody {
+    background: #fff;
+}
+/* sticky column first tbody */
+.stickyFirstCol>tbody>tr>td:nth-child(1) {
+    position: -webkit-sticky;
+    position: sticky;
+    left: 0;
+}
+.stickyFirstCol>tbody>tr>td.fixedLeft {
+    background: #eee;
+}
+.input-group-text i {width: 16px}
+.table .select-checkbox:before{content: '';background-color: #fff;width: 1.25rem;height: 1.25rem;margin-top: -.625rem;margin-left: -.625rem;border: .125rem solid #455a64;border-radius: .125rem;}
+.table .select-checkbox:after, .table .select-checkbox:before {display: inline-block;color: #455a64;position: absolute;top: 50%;left: 50%;cursor: pointer;}
+.table .selected .select-checkbox:after{font-family:"Font Awesome 5 Pro";content: '\f00c';font-size: .58rem;line-height: 1.8;margin-top: -.5rem;margin-left: -.26rem;font-weight: bold;}
+.sidebar.sidebar-main {top: 3.1rem}
+.content-modal table, .content-modal iframe, .content-modal p, .content-modal span, .content-modal i, .content-modal b, .content-modal img{
+    max-width: 100% !important;
+}
+.content-modal img{height: auto !important}
+textarea.ta-row-1 {height: 36px;}
+#expiredWarning:hover {color: #ccc !important}
+
+/*-- style form filter --*/
+/*.form-filter .card-body {background:#f5f5f5}*/
+#boxFilters {box-shadow: none}
+.form-filter .card-body.background-transparent {background:#eee}
+.form-filter .card-body.background-horizontal {background:#f5f5f5}
+.form-filter .form-group.active>label {display: block!important;}
+
+.form-filter .form-group{position: relative;margin-bottom: 0.625em}
+
+.form-filter .form-group input:focus + label,
+.form-filter .form-group textarea:focus + label,
+.form-filter .form-group select:focus + label{
+    color: #2191ea;
+}
+.form-filter label.input-group-text {
+    border: none;
+    background: none;
+    border-bottom: 1px solid #ced4da;
+    border-radius: 0;
+}
+.form-filter .form-group .input-group-append {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 10;
+}
+.form-filter .form-group .input-group-append .input-group-text {
+    background: none;
+    border: 0;
+}
+.form-filter .form-group .input-group-append .input-group-text i {color: #aaa;}
+.dropAdvancedFilter {
+    top: -2px !important;
+    left: -40px !important;
+}
+.select2-dropdown.select2-dropdown--below {
+    min-width: 300px !important;
+}
+.card .cke_chrome {border:0} /* remove border on form, now ckeditor is displaying 100% on .card */
+.reportWeekday_6 {
+    background: #f0f0f0;
+}
+.reportWeekday_0{
+    background:#E2EFDA
+}
+/*-- style select box dùng bootstrap multiselect --*/
+.form-filter .multiselect-native-select .multiselect {
+    height: 36px;
+}
+.form-filter .multiselect-native-select .multiselect:after {
+    font-size: 1.1rem !important;
+    right: 0.4rem;
+    top: 0.9rem;
+}
+.form-filter .multiselect-native-select .multiselect.btn-light {
+    border: none;
+    border-bottom: 1px solid #ced4da;
+    border-radius: 0;
+}
+.form-filter .multiselect-native-select .btn-group.show .multiselect.btn-light,
+.form-filter .multiselect-native-select .multiselect.btn-light:focus,
+.form-filter .multiselect-native-select .multiselect.btn-light:hover,
+.form-filter .multiselect-native-select .multiselect.btn-light:not([disabled]):not(.disabled):active {
+    box-shadow: none;
+}
+.form-filter .multiselect-item.multiselect-filter .multiselect-search {
+    border: 1px solid #ced4da;
+    border-radius: 3px;
+}
+.form-filter .multiselect-item.multiselect-filter>.input-group>i {
+    display: none;
+}
+.form-filter .multiselect-container .input-group {
+    margin: 5px 0;
+}
+.form-filter > .card-body > div, .form-filter > .card-body span, .form-filter > .card-body input, .form-filter > .card-body  select {
+    font-size: 0.9rem;
+}
+.form-filter .select-multipleCheckbox {
+    height: 35px !important;
+    overflow: hidden !important;
+}
+.select2-results__option .wrapSelect:before{
+    font-family: "Font Awesome 5 Pro";
+    content: '\f0c8';
+    padding-right: 10px;
+}
+.select2-results__option[aria-selected=true] .wrapSelect:before,.select2-results__option--selected .wrapSelect:before{
+    font-family: "Font Awesome 5 Pro";
+    content: '\f14a';
+}
+.select2-selection__clear {
+    display: none;
+}
+
+.select2-search__field.inputCheckAll {
+    width: calc(100% - 30px);
+}
+#savedAdvancedFilter{
+    border: none;
+    border-top-right-radius: 5px;
+    color: #fff;
+}
+#deleteSavedFilter, #deleteCacheHistory {
+    display: none;
+    z-index: 9999;
+    padding: 1rem;
+}
+#savedAdvancedFilter > a:hover #deleteSavedFilter,
+#savedAdvancedFilter > a:hover #deleteCacheHistory {
+    display: block;
+}
+.status_box {
+    z-index: 10;
+    left: 55px;
+    top: -10px;
+}
+/*-- end form filter --*/
+.ui-config-font-thin{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji" !important;
+}
+.iconImageDefault {width:32px; display: block;overflow: hidden}
+.iconImageDefault img {width: 100%}
+.columnImg .imageZoomHover{position: absolute;right: 0;left: 100%;top: 0;display: none;width: 200px;height: 200px;background: #fff; border: 2px solid #5bc42b}
+.columnImg .imageZoomHover img {object-fit: contain;width: 100%;height: 100%}
+.columnImg {position: relative}
+.columnImg:HOVER .imageZoomHover{display: block}
+.btnDefaultColor{
+	background: #E9E9E9;
+}
+/** style iframe content scroll */
+.scroll-wrapper>iframe {
+    position:absolute;
+    top:0px;
+    left:0px;
+    bottom:0px;
+    right:0px;
+    width:100%;
+    height:100%;
+    border:none;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    z-index:999999;
+}
+#tableTop-paginator li a, #tableTop-paginator li span{
+    padding: 0 6px;
+}
+
+/*================= style menu con cấp 3 ở menu dọc ===============*/
+/*.nav-sidebar>.nav-item.nav-item-submenu .nav.nav-group-sub .nav-item-submenu .nav-group-sub::-webkit-scrollbar {*/
+/*    width: 10px;*/
+/*}*/
+/*.nav-sidebar>.nav-item.nav-item-submenu .nav.nav-group-sub .nav-item-submenu .nav-group-sub::-webkit-scrollbar-track {*/
+/*    background: #f1f1f1;*/
+/*}*/
+/*.nav-sidebar>.nav-item.nav-item-submenu .nav.nav-group-sub .nav-item-submenu .nav-group-sub::-webkit-scrollbar-thumb {*/
+/*    background: #ccc;*/
+/*}*/
+/*.nav-sidebar>.nav-item.nav-item-submenu .nav.nav-group-sub .nav-item-submenu .nav-group-sub::-webkit-scrollbar-thumb:hover {*/
+/*    background: #555;*/
+/*}*/
+/*.nav-sidebar>.nav-item.nav-item-submenu .nav.nav-group-sub .nav-item-submenu {*/
+/*    position: relative;*/
+/*}*/
+/*.nav-sidebar>.nav-item.nav-item-submenu .nav.nav-group-sub .nav-item-submenu .nav-group-sub {*/
+/*    display: none !important;*/
+/*    position: absolute;*/
+/*    left: 100%;*/
+/*    top: 0;*/
+/*    background: #202b30;*/
+/*    min-width: 250px;*/
+/*    max-height: 350px;*/
+/*    overflow-y: auto;*/
+/*}*/
+/*!* từ item thứ 7 sẽ hiện submenu bên trên*!*/
+/*.nav-sidebar>.nav-item.nav-item-submenu .nav.nav-group-sub .nav-item-submenu:nth-child(n+7) .nav-group-sub {*/
+/*    top: unset;*/
+/*    bottom: 0;*/
+/*}*/
+/*.nav-sidebar>.nav-item.nav-item-submenu .nav.nav-group-sub .nav-item-submenu:hover .nav-group-sub {*/
+/*    display: block !important;*/
+/*}*/
+/*.nav-sidebar>.nav-item.nav-item-submenu .nav.nav-group-sub .nav-item-submenu .nav-group-sub li a {*/
+/*    padding-left: 1rem;*/
+/*}*/
+/*================= style menu con cấp 3 ở menu dọc ===============*/
+
+/*--- Style scrollbar ---*/
+::-webkit-scrollbar {
+    width: 6px;
+    height: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: #bebebe;
+}
+/* Dành cho trình duyệt FireFox */
+@-moz-document url-prefix() {
+    * {
+        scrollbar-width: thin;
+    }
+}
+/*-- style scrollbar for FireFox --*/
+.scroll-bar-x-hidden {
+	overflow-x: hidden !important;
+}
+#notifyBox {
+    width: calc(100vw - 950px);
+    max-height: 300px;
+    overflow-y: auto;
+    max-width: 450px;
+}
+#notifyBox li:hover a{
+    transition: 3s;
+}
+/* áp dụng cho các màn hình > 1368 */
+@media screen and (min-width: 1370px) {
+    .container {max-width: 95%}
+}
+
+@media screen and (max-width: 1368px) {
+    .userFullName {max-width: 118px}
+    #dropDownAvdancedFilter{
+        padding: 0 .625rem;
+    }
+    .container {
+        max-width: 100%;
+        padding:0
+    }
+    .row.pageHelpInfo {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .userFullName {max-width: 250px}
+}
+
+@media screen and (min-width: 1024px) {
+    .content-wrapper {
+        overflow: visible
+    }
+    /* Do table đã full content cần để padding 0 */
+    .content-wrapper > .container .content {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    body,.form-control {
+        font-size: 0.875rem !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {font-size: 15px}
+    #header .container {
+        overflow-x: visible;
+    }
+    .container,.content {
+        padding-left:0;
+        padding-right:0;
+        overflow-x: hidden;
+    }
+    .navbar-expand-md .navbar-collapse {
+        display: -ms-flexbox!important;
+        display: flex!important;
+        -ms-flex-preferred-size: auto;
+        flex-basis: auto;
+    }
+    /* Trang nếu có tab và số lượng tab quá dài sẽ tạo thanh cuộn ngang fix từ Ipad trở xuống */
+    #tabPageDetail,.navTabTopFilter,.navTabTopFilterStep {
+        flex-wrap: nowrap;
+        overflow : auto;
+        /* Update: 20/12/2022: Check lỗi không kéo xem hết được nội dung tab */
+        white-space: nowrap;
+        /* Ẩn thanh scrollbar fix cho Firefox scrollbar-width */
+        scrollbar-width: none;
+    }
+    /* Ẩn thanh scrollbar fix cho Chrome,Edge -webkit-scrollbar */
+    #tabPageDetail::-webkit-scrollbar, .navTabTopFilter::-webkit-scrollbar, .navTabTopFilterStep::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    body {
+        font-size: 0.9rem !important;
+    }
+    .container {max-width: 85%;}
+    .form-control, .dropdown-menu {
+       font-size: .875rem !important;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+    body {font-size: .875rem}
+    /* check scroll trên ipad */
+    .scroll-wrapper {
+        -webkit-overflow-scrolling: touch;
+        overflow-y: scroll;
+    }
+}
+
+@media screen and (max-width: 670px) {
+   #buttonMenuMobileFilter {
+       position: absolute;
+       top:0;
+       width: 100%;
+   }
+   #buttonMenuMobileFilter button[type="submit"]{
+      width: 70%;
+   }
+}
+.font-size-2{
+    font-size: 2rem;
+}
+.font-size-2-5{
+    font-size: 2.5rem;
+}
+.font-size-3{
+    font-size: 4rem;
+}
+body.page-type-datagrid .page-content .content {padding-top:0 !important}
+/* 2021-04-27 fix color and padding datagrid page on vertical menu */
+body.layout-vertical.page-type-datagrid {background:#F5F5F5}
+body.layout-vertical.page-type-datagrid div.card-header.header-elements-inline {padding-left:0 !important; padding-right:0 !important}
+.textbox-only-border-bottom {border:0; border-bottom:1px solid #ddd}
+#tableFee .logoCarrier {max-height:35px}
+.opacityNoEvents{
+    opacity: 0;
+    pointer-events: none;
+}
+.h-0{
+    height: 0;
+}
+.ck-editor__editable_inline {
+    max-height: 600px;
+}
+.ck-rounded-corners .ck.ck-balloon-panel{
+    z-index: 9999;
+}
