@@ -1,5 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+
+
 // const Admin = React.lazy(() => import('./pages/admin/Index'))
 
 import Admin from './pages/admin/Index';
