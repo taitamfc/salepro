@@ -6,8 +6,10 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import ProductTableItem from '../../components/product/ProductTableItem';
+import LoadingTable from '../../components/global/LoadingTable';
 
 function Index(props) {
+    const [loading,setLoading] = useState(true);
     const [items,setItems] = useState([]);
     const [page,setPage] = useState(1);
     const [filter,setFilter] = useState({});
@@ -17,10 +19,11 @@ function Index(props) {
             page: page,
             filter: filter
         }).then( res => {
+            setLoading(false);
             setItems(res.data);
-            setPageData(res);
+            setPageData(res.meta);
         } )
-    }, [page,filter]);
+    }, [page,filter,loading]);
 
     return (
         <MasterLayout>
@@ -86,6 +89,9 @@ function Index(props) {
                             </thead>
                             <tbody>
                                 {
+                                    loading ? (
+                                        <LoadingTable colSpan={10}/>
+                                    ) : 
                                     items.map( (item,key) => (
                                         <ProductTableItem key={key} the_key={key} item={item}/>
                                     ))

@@ -1,100 +1,102 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Icon from '../Icon';
+import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
+import lang from '../../lang/vi';
+import CategoryModel from '../../models/CategoryModel';
+import { useNavigate } from "react-router-dom";
 
+
+const rules = Yup.object().shape({
+    name: Yup.string().required(lang.required)
+});
 function CategoryForm(props) {
+    let {id} = props;
+    let navigate = useNavigate();
+
+    const [formData, setFormData] = useState({
+        name: '',
+        parent_id: 0,
+        image : ''
+    });
+    const [categories, setCategories] = useState([]);
+
+    // contructor
+    useEffect( () => {
+        CategoryModel.all().then( res => {
+            setCategories(res.data);
+        }).catch( err => { alert(err.message); });
+
+        if(id){
+            CategoryModel.find(id).then( res => {
+                setFormData(res.data);
+            }).catch( err => { alert(err.message); });
+        }
+    }, [navigate]);
+
+    const handleSubmit = (values) => {
+        if(id){
+            CategoryModel.update(id,values).then( res => {
+                alert( lang.saved )
+                navigate('/categories')
+            }).catch( err => { alert(err.message); });
+        }else{
+            CategoryModel.store(values).then( res => {
+                alert( lang.saved )
+                navigate('/categories')
+            }).catch( err => { alert(err.message); });
+        }
+    }
     return (
-        <div className='row'>
-            <div className='col-md-6'>
-                <div className='card p-3'>
-                    <div className="row mb-2">
-                        <div className='col-md-12'>
-                            <div className="mb-2">
-                                <label>Tên sản phẩm * </label>
-                                <input type="text" name="name" className="form-control"/>
+        <Formik
+            enableReinitialize={true}
+            initialValues={formData}
+            validationSchema={rules}
+            onSubmit={values => handleSubmit(values)}
+        >
+        {({ errors, touched}) => (
+            <Form className='content'>
+                <div className='row'>
+                    <div className='col-md-6'>
+                        <div className='card p-3'>
+                            <div className="fomr-group mb-2">
+                                <label>Tên * </label>
+                                <Field name="name" className="form-control" />
+                                {errors.name && touched.name ? (
+                                    <div className='validation-invalid-label'>{errors.name}</div>
+                                ) : null}
                             </div>
-                        </div>
-                        <div className='col-md-6'>
-                            <div className="mb-2">
-                                <label>Loại sản phẩm</label>
-                                <select className="form-control">
-                                    <option>1</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div className='col-md-6'>
-                            <div className="mb-2">
-                                <label>Mã sản phẩm</label>
-                                <input type="text" name="code" className="form-control"/>
-                            </div>
-                        </div>
-                        <div className='col-md-6'>
-                            <div className="mb-2">
-                                <label>Giá nhập</label>
-                                <input type="text" name="cost" className="form-control"/>
-                            </div>
-                        </div>
-                        <div className='col-md-6'>
-                            <div className="mb-2">
-                                <label>Giá bán</label>
-                                <input type="text" name="price" className="form-control"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className='col-md-6'>
-                <div className='card p-3'>
-                    <div className="row mb-2">
-                        <div className='col-md-12'>
-                            <div className="mb-2">
+                            <div className="fomr-group mb-2">
                                 <label>Danh mục</label>
-                                <div className='input-group'>
-                                    <select className="form-control">
-                                        <option>1</option>
-                                    </select>
-                                    <div className='input-group-prepend'>
-                                        <span className='input-group-text cursor-pointer'>
-                                            <Icon fa='fa fa-plus text-success' />
-                                        </span>
-                                    </div>
-                                </div>
+                                <Field as="select" name="parent_id" className="form-control">
+                                    {
+                                        categories.map( (category,key) => (
+                                            <option key={key} value={category.id}>{category.name}</option>
+                                        ) )
+                                    }
+                                </Field>
                             </div>
-                        </div>
-                        <div className='col-md-12'>
-                            <div className="mb-2">
-                                <label>Thương hiệu</label>
-                                <div className='input-group'>
-                                    <select className="form-control">
-                                        <option>1</option>
-                                    </select>
-                                    <div className='input-group-prepend'>
-                                        <span className='input-group-text cursor-pointer'>
-                                            <Icon fa='fa fa-plus text-success' />
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='col-md-12'>
-                            <div className="mb-2">
-                                <label>Đơn vị mua hàng</label>
-                                <div className='input-group'>
-                                    <select className="form-control">
-                                        <option>1</option>
-                                    </select>
-                                    <div className='input-group-prepend'>
-                                        <span className='input-group-text cursor-pointer'>
-                                            <Icon fa='fa fa-plus text-success' />
-                                        </span>
-                                    </div>
-                                </div>
+                            <div className="fomr-group mb-2">
+                                <label>Hình ảnh</label>
+                                <Field name="image" className="form-control" type="file" />
+                                {/* <input type="file" name="image" className="form-control"/> */}
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+                <div className='row'>
+                    <div className='col-md-12'>
+                        <button type="submit" className="btn btn-success">
+                            <Icon fa={'fal fa-save mr-2'}/> Lưu
+                        </button>
+                    </div>
+                </div>
+            </Form>    
+        )}
+        </Formik>
     );
 }
-
+CategoryForm.defaultProps = {
+    id: 0
+}
 export default CategoryForm;

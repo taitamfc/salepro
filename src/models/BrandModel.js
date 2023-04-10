@@ -1,8 +1,8 @@
 import {API_URL} from '../env';
 import axiosClient from './axiosClient';
-class CategoryModel {
+class BrandModel {
     constructor(){
-        this.api_url = API_URL + 'categories';
+        this.api_url = API_URL + 'brands';
     }
 
     async all(params = {}){
@@ -28,4 +28,4 @@ class CategoryModel {
     }
 }
 
-export default new CategoryModel;
+export default new BrandModel;

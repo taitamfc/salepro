@@ -6,8 +6,10 @@ import CategoryModel from '../../models/CategoryModel';
 import Breadcrumb from '../../includes/page/Breadcrumb';
 import { Link } from 'react-router-dom';
 import CategoryTableItem from '../../components/category/CategoryTableItem';
+import LoadingTable from '../../components/global/LoadingTable';
 
 function Index(props) {
+    const [loading,setLoading] = useState(true);
     const [items,setItems] = useState([]);
     const [page,setPage] = useState(1);
     const [filter,setFilter] = useState({});
@@ -17,7 +19,7 @@ function Index(props) {
             page: page,
             filter: filter
         }).then( res => {
-            console.log(res.data);
+            setLoading(false);
             setItems(res.data);
             setPageData(res);
         } )
@@ -73,13 +75,15 @@ function Index(props) {
                                     <th className="select-checkbox dgCheckboxCheckAll"></th>
                                     <th>Ảnh</th>
                                     <th>Tên</th>
-                                    <th>Mã</th>
                                     <th>Số SP</th>
                                     <th><i className="fal fa-cog"></i></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {
+                                    loading ? (
+                                        <LoadingTable colSpan={6}/>
+                                    ) : 
                                     items.map( (item,key) => (
                                         <CategoryTableItem key={key} the_key={key} item={item}/>
                                     ))

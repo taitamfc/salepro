@@ -7,7 +7,11 @@ class ProductModel {
 
     async all(params = {}){
         const data = await axiosClient.get(this.api_url,params);
-        return data.data;
+        return data;
+    }
+    async store(data){
+        const res = await axiosClient.post(this.api_url,data);
+        console.log(res);
     }
 }
 

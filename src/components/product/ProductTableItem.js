@@ -13,10 +13,10 @@ function ProductTableItem(props) {
                 </td>
                 <td>{item.name}</td>
                 <td>{item.code}</td>
-                <td>{item.brand_id || ''}</td>
-                <td>{item.category_id || ''}</td>
+                <td>{item.brand_name || ''}</td>
+                <td>{item.category_name || ''}</td>
                 <td>{item.qty}</td>
-                <td>{item.unit}</td>
+                <td>{item.unit_name}</td>
                 <td>{item.price}</td>
                 <td className='dgColAction text-center'>
                     <div className='dropdown'>
@@ -24,7 +24,7 @@ function ProductTableItem(props) {
                             <Icon fa='far fa-bars'/>
                         </a>
                         <div className='dropdown-menu dropdown-menu-right'>
-                            <Link className='dropdown-item'><Icon fa='fal fa-pencil'/> Sửa sản phẩm</Link>
+                        <Link to={'/products/create/'+item.id} className='dropdown-item'><Icon fa='fal fa-pencil'/> Sửa sản phẩm</Link>
                             <Link className='dropdown-item text-danger js-del-item deleteBtn'><Icon fa='fal fa-trash'/> Xóa</Link>
                         </div>
                     </div>
