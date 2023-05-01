@@ -1,12 +1,11 @@
 import React from 'react';
 import MasterLayout from '../../layouts/MasterLayout';
-import Breadcrumb from '../../includes/page/Breadcrumb';
-import ProductModel from '../../models/ProductModel';
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { useEffect } from 'react';
+import SaleModel from '../../models/SaleModel';
+import Breadcrumb from '../../includes/page/Breadcrumb';
+import { Link } from 'react-router-dom';
 import MyTable from '../../components/global/MyTable';
-import lang from '../../lang/vi';
 
 function Index(props) {
     const [loading,setLoading] = useState(true);
@@ -15,31 +14,23 @@ function Index(props) {
     const [filter,setFilter] = useState({});
     const [pageData,setPageData] = useState({});
     useEffect( () => {
-        ProductModel.all({
+        SaleModel.all({
             page: page,
             filter: filter
         }).then( res => {
+            console.log(res);
             setLoading(false);
             setItems(res.data);
             setPageData(res.meta);
-        } )
-    }, [page,filter,loading]);
-
-    const handleDelete = (id,title = '') => {
-        title = title ? title : id;
-        let check = window.confirm('Bạn có chắc chắn xóa #'+id);
-        if(check){
-            ProductModel.delete(id).then( res => {
-                alert(lang.deleted);
-                setLoading(true);
-            })
-        }
-    }
+        }).catch( err => {
+            alert(err.message);
+        })
+    }, [page,filter]);
 
     return (
         <MasterLayout>
             <div className='page-header'>
-            <Breadcrumb pageName='Danh sách sản phẩm' parentName='Sản phẩm' parentLink='products' />
+                <Breadcrumb pageName='Bán hàng' parentName='Bán hàng' parentLink='sales' />
                 <div id='filterArea' className='content p-0'>
                     <div id='boxFilters' className='mb-0 border-0 card'>
                         <form>
@@ -69,11 +60,8 @@ function Index(props) {
                                     Thêm mới
                                 </button>
                                 <div className='dropdown-menu'>
-                                    <Link to={'/products/create'} className='dropdown-item'>
+                                    <Link to={'/sales/create'} className='dropdown-item'>
                                         <i className='fal fa-plus mr-2'></i>Thêm mới
-                                    </Link>
-                                    <Link to={'/products/createFromExcel'} className='dropdown-item'>
-                                        <i className='fal fa-file-excel mr-2'></i>Nhập từ Excel
                                     </Link>
                                 </div>
                             </div>
@@ -86,11 +74,28 @@ function Index(props) {
                         <MyTable 
                             items={items} 
                             loading={loading} 
-                            headers={['Tên','Mã','Nhãn hiệu','Thể loại','Số lượng','Đơn vị','Giá']} 
-                            cols={['name','code','brand_name','category_name','qty','unit_name','price']}
+                            headers={['ID','Ngày','Kho hàng','Khách hàng','SP','SL','Tổng tiền','Đã trả','Nợ']} 
+                            cols={['reference_no','created_at_format','warehouse_name','customer_info','item','total_qty','grand_total','paid_amount','due']}
                             actions={['Sửa','Xóa']}
-                            base_link={'products'}
-                            handleDelete={handleDelete}
+                            base_link={'sales'}
+                            col_active={false}
+                            dropdownActions={[
+                                {
+                                    to: '/sales/show/__ID__',
+                                    icon: 'fa fa-eye',
+                                    label: 'Xem',
+                                },
+                                {
+                                    to: '/sales/add_payment/__ID__',
+                                    icon: 'fa fa-plus',
+                                    label: 'Thêm thanh toán',
+                                },
+                                {
+                                    to: '/sales/view_payment/__ID__',
+                                    icon: 'fal fa-money-bill-alt',
+                                    label: 'Xem thanh toán',
+                                }
+                            ]}
                         />
                     </div>
 

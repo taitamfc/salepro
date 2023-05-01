@@ -1,17 +1,12 @@
 import {API_URL} from '../env';
 import axiosClient from './axiosClient';
-class ProductModel {
+class TransferModel {
     constructor(){
-        this.api_url = API_URL + 'products';
+        this.api_url = API_URL + 'transfers';
     }
-
-    async all(data = {}){
-        try {
-            const res = await axiosClient.get(this.api_url,{ params: data });
-            return res;
-        } catch (error) {
-            alert(error.message);
-        }
+    async all(params = {}){
+        const data = await axiosClient.get(this.api_url,params);
+        return data;
     }
     async find(id){
         const data = await axiosClient.get(this.api_url + '/' + id);
@@ -32,4 +27,4 @@ class ProductModel {
     }
 }
 
-export default new ProductModel;
+export default new TransferModel;

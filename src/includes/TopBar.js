@@ -52,7 +52,7 @@ function TopBar(props) {
                     {/* Navbar content */}
                     <div className="collapse navbar-collapse" id="navbar-mobile">
                     <a
-                        href="javascript:;"
+                        href=""
                         className="text-center w-100 text-md-left w-md-auto text-white"
                         id="expiredWarning"
                         style={{ display: "none" }}

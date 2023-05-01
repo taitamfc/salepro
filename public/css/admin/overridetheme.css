@@ -842,3 +842,7 @@ CSS group add Batch
         padding-top: 8% !important;
     }
 }
+.modal.fade.show {
+    overflow-x: hidden;
+    overflow-y: auto;
+}

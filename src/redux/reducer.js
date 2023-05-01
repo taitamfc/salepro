@@ -1,9 +1,8 @@
-import { FETCH_USER_SUCCESS, LOGIN_SUCCESS } from "./action";
+import { SET_WAREHOUSE_ID } from "./action";
 
 // khởi tạo giá trị mặc định cho state gốc.
 const initialState = {
-    users: [],
-    userlogined: {}
+  warehouse_id: 0
 };
 
 
@@ -11,12 +10,10 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
     // Handle các actions gửi lên
     switch (action.type) {
-      case LOGIN_SUCCESS:
-        return { ...state, userlogined: action.payload };
-      case FETCH_USER_SUCCESS:
-        return { ...state, users: action.payload };
+      case SET_WAREHOUSE_ID:
+        return { ...state, warehouse_id: action.payload };
       default:
         return state;
     }
-  };
-  export default rootReducer;
+};
+export default rootReducer;

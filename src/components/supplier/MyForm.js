@@ -3,47 +3,39 @@ import Icon from '../Icon';
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import lang from '../../lang/vi';
-import CategoryModel from '../../models/CategoryModel';
+import SupplierModel from '../../models/SupplierModel';
 import { useNavigate } from "react-router-dom";
 
-
 const rules = Yup.object().shape({
-    name: Yup.string().required(lang.required)
+    name: Yup.string().required(lang.required),
 });
-function CategoryForm(props) {
+function MyForm(props) {
     let {id} = props;
     let navigate = useNavigate();
 
     const [formData, setFormData] = useState({
-        name: '',
-        parent_id: 0,
-        image : ''
+        name: ''
     });
-    const [categories, setCategories] = useState([]);
 
     // contructor
     useEffect( () => {
-        CategoryModel.all().then( res => {
-            setCategories(res.data);
-        }).catch( err => { alert(err.message); });
-
         if(id){
-            CategoryModel.find(id).then( res => {
+            SupplierModel.find(id).then( res => {
                 setFormData(res.data);
             }).catch( err => { alert(err.message); });
         }
-    }, [navigate]);
+    }, []);
 
     const handleSubmit = (values) => {
         if(id){
-            CategoryModel.update(id,values).then( res => {
+            SupplierModel.update(id,values).then( res => {
                 alert( lang.saved )
-                navigate('/categories')
+                navigate('/supplier')
             }).catch( err => { alert(err.message); });
         }else{
-            CategoryModel.store(values).then( res => {
+            SupplierModel.store(values).then( res => {
                 alert( lang.saved )
-                navigate('/categories')
+                navigate('/supplier')
             }).catch( err => { alert(err.message); });
         }
     }
@@ -59,27 +51,12 @@ function CategoryForm(props) {
                 <div className='row'>
                     <div className='col-md-6'>
                         <div className='card p-3'>
-                            <div className="fomr-group mb-2">
+                            <div className="mb-2">
                                 <label>Tên * </label>
                                 <Field name="name" className="form-control" />
                                 {errors.name && touched.name ? (
                                     <div className='validation-invalid-label'>{errors.name}</div>
                                 ) : null}
-                            </div>
-                            <div className="fomr-group mb-2">
-                                <label>Danh mục</label>
-                                <Field as="select" name="parent_id" className="form-control">
-                                    {
-                                        categories.map( (category,key) => (
-                                            <option key={key} value={category.id}>{category.name}</option>
-                                        ) )
-                                    }
-                                </Field>
-                            </div>
-                            <div className="fomr-group mb-2">
-                                <label>Hình ảnh</label>
-                                <Field name="image" className="form-control" type="file" />
-                                {/* <input type="file" name="image" className="form-control"/> */}
                             </div>
                         </div>
                     </div>
@@ -96,7 +73,7 @@ function CategoryForm(props) {
         </Formik>
     );
 }
-CategoryForm.defaultProps = {
+MyForm.defaultProps = {
     id: 0
 }
-export default CategoryForm;
+export default MyForm;

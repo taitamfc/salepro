@@ -1156,7 +1156,7 @@ function Sidebar(props) {
                         </li>
                         <li className="align-items-center d-none d-md-flex position-relative">
                             <a
-                                href="javascript:"
+                                href=""
                                 className="bg-transparent sidebar-control sidebar-main-toggle d-none d-md-inline-block text-white"
                                 id="showHideMainMenu"
                                 title="Ẩn / Hiện menu trái"

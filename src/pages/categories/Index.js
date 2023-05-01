@@ -5,8 +5,8 @@ import { useEffect } from 'react';
 import CategoryModel from '../../models/CategoryModel';
 import Breadcrumb from '../../includes/page/Breadcrumb';
 import { Link } from 'react-router-dom';
-import CategoryTableItem from '../../components/category/CategoryTableItem';
-import LoadingTable from '../../components/global/LoadingTable';
+import MyTable from '../../components/global/MyTable';
+import lang from '../../lang/vi';
 
 function Index(props) {
     const [loading,setLoading] = useState(true);
@@ -23,7 +23,18 @@ function Index(props) {
             setItems(res.data);
             setPageData(res);
         } )
-    }, [page,filter]);
+    }, [page,filter,loading]);
+
+    const handleDelete = (id,title = '') => {
+        title = title ? title : id;
+        let check = window.confirm('Bạn có chắc chắn xóa #'+id);
+        if(check){
+            CategoryModel.delete(id).then( res => {
+                alert(lang.deleted);
+                setLoading(true);
+            })
+        }
+    }
 
     return (
         <MasterLayout>
@@ -69,29 +80,16 @@ function Index(props) {
                         </div>
                     </div>
                     <div className='table-responsive'>
-                        <table className='table table-tiny table-hover table-bordered dataTable stickyHeader'>
-                            <thead className="dgTh">
-                                <tr className="text-center">
-                                    <th className="select-checkbox dgCheckboxCheckAll"></th>
-                                    <th>Ảnh</th>
-                                    <th>Tên</th>
-                                    <th>Số SP</th>
-                                    <th><i className="fal fa-cog"></i></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    loading ? (
-                                        <LoadingTable colSpan={6}/>
-                                    ) : 
-                                    items.map( (item,key) => (
-                                        <CategoryTableItem key={key} the_key={key} item={item}/>
-                                    ))
-                                }
-                            </tbody>
-                        </table>
+                        <MyTable 
+                            items={items} 
+                            loading={loading} 
+                            headers={['Tên','Số SP']} 
+                            cols={['name','product_count']}
+                            actions={['Sửa','Xóa']}
+                            base_link={'categories'}
+                            handleDelete={handleDelete}
+                        />
                     </div>
-
                 </div>
             </div>
 

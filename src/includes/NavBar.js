@@ -51,7 +51,7 @@ function NavBar(props) {
                                     <i className="fal fa-retweet" />
                                     Chuyển kho
                                 </Link>
-                                <Link to={'/qty_adjustment'} className='dropdown-item'>
+                                <Link to={'/adjustment'} className='dropdown-item'>
                                     <i className="fal fa-calendar-check" />
                                     Điều chỉnh
                                 </Link>
@@ -72,7 +72,7 @@ function NavBar(props) {
                                     <i className="fal fa-truck" />
                                     Danh sách giao hàng
                                 </Link>
-                                <Link to={'/return-sale/create'} className='dropdown-item'>
+                                <Link to={'/return-sale'} className='dropdown-item'>
                                     <i className="fal fa-arrow-square-left" />
                                     Trả hàng từ khách
                                 </Link>
@@ -122,6 +122,14 @@ function NavBar(props) {
                                 <Link to={'/warehouse'} className='dropdown-item'>
                                     <i className="fal fa-sitemap" />
                                     Kho hàng
+                                </Link>
+                                <Link to={'/unit'} className='dropdown-item'>
+                                    <i className="fal fa-tags" />
+                                    Đơn vị
+                                </Link>
+                                <Link to={'/unit'} className='dropdown-item'>
+                                    <i className="fal fa-cog" />
+                                    Cài đặt chung
                                 </Link>
                             </div>
                         </li>

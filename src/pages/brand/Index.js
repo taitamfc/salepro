@@ -1,10 +1,10 @@
 import React from 'react';
 import MasterLayout from '../../layouts/MasterLayout';
-import Breadcrumb from '../../includes/page/Breadcrumb';
-import ProductModel from '../../models/ProductModel';
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { useEffect } from 'react';
+import BrandModel from '../../models/BrandModel';
+import Breadcrumb from '../../includes/page/Breadcrumb';
+import { Link } from 'react-router-dom';
 import MyTable from '../../components/global/MyTable';
 import lang from '../../lang/vi';
 
@@ -15,7 +15,7 @@ function Index(props) {
     const [filter,setFilter] = useState({});
     const [pageData,setPageData] = useState({});
     useEffect( () => {
-        ProductModel.all({
+        BrandModel.all({
             page: page,
             filter: filter
         }).then( res => {
@@ -29,7 +29,7 @@ function Index(props) {
         title = title ? title : id;
         let check = window.confirm('Bạn có chắc chắn xóa #'+id);
         if(check){
-            ProductModel.delete(id).then( res => {
+            BrandModel.delete(id).then( res => {
                 alert(lang.deleted);
                 setLoading(true);
             })
@@ -39,7 +39,7 @@ function Index(props) {
     return (
         <MasterLayout>
             <div className='page-header'>
-            <Breadcrumb pageName='Danh sách sản phẩm' parentName='Sản phẩm' parentLink='products' />
+                <Breadcrumb pageName='Nhãn hiệu' parentName='Nhãn hiệu' parentLink='brand' />
                 <div id='filterArea' className='content p-0'>
                     <div id='boxFilters' className='mb-0 border-0 card'>
                         <form>
@@ -69,11 +69,8 @@ function Index(props) {
                                     Thêm mới
                                 </button>
                                 <div className='dropdown-menu'>
-                                    <Link to={'/products/create'} className='dropdown-item'>
+                                    <Link to={'/brand/create'} className='dropdown-item'>
                                         <i className='fal fa-plus mr-2'></i>Thêm mới
-                                    </Link>
-                                    <Link to={'/products/createFromExcel'} className='dropdown-item'>
-                                        <i className='fal fa-file-excel mr-2'></i>Nhập từ Excel
                                     </Link>
                                 </div>
                             </div>
@@ -86,17 +83,15 @@ function Index(props) {
                         <MyTable 
                             items={items} 
                             loading={loading} 
-                            headers={['Tên','Mã','Nhãn hiệu','Thể loại','Số lượng','Đơn vị','Giá']} 
-                            cols={['name','code','brand_name','category_name','qty','unit_name','price']}
+                            headers={['Tên']} 
+                            cols={['title']}
                             actions={['Sửa','Xóa']}
-                            base_link={'products'}
+                            base_link={'brand'}
                             handleDelete={handleDelete}
                         />
                     </div>
-
                 </div>
             </div>
-
         </MasterLayout>
     );
 }
