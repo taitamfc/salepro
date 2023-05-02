@@ -2,10 +2,11 @@ import React from 'react';
 import MasterLayout from '../../layouts/MasterLayout';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import PurchaseModel from '../../models/PurchaseModel';
+import ReturnPurchaseModel from '../../models/ReturnPurchaseModel';
 import Breadcrumb from '../../includes/page/Breadcrumb';
 import { Link } from 'react-router-dom';
 import MyTable from '../../components/global/MyTable';
+import MyPagination from '../../components/global/MyPagination';
 
 function Index(props) {
     const [loading,setLoading] = useState(true);
@@ -14,7 +15,7 @@ function Index(props) {
     const [filter,setFilter] = useState({});
     const [pageData,setPageData] = useState({});
     useEffect( () => {
-        PurchaseModel.all({
+        ReturnPurchaseModel.all({
             page: page,
             filter: filter
         }).then( res => {
@@ -74,30 +75,15 @@ function Index(props) {
                         <MyTable 
                             items={items} 
                             loading={loading} 
-                            headers={['ID','Ngày','Kho hàng','Nhà CC','SP','SL','Tổng tiền','Đã trả','Nợ']} 
-                            cols={['reference_no','created_at_format','warehouse_name','supplier_name','total_product','total_qty','grand_total','paid_amount','due']}
+                            headers={['ID','Ngày','Kho hàng','Nhà CC','SP','SL','Tổng tiền']} 
+                            cols={['reference_no','created_at_format','warehouse_name','supplier_name','total_product','total_qty','grand_total']}
                             actions={['Sửa','Xóa']}
-                            base_link={'purchases'}
+                            base_link={'return-purchase'}
                             col_active={false}
-                            dropdownActions={[
-                                {
-                                    to: '/purchases/show/__ID__',
-                                    icon: 'fa fa-eye',
-                                    label: 'Xem',
-                                },
-                                {
-                                    to: '/purchases/add_payment/__ID__',
-                                    icon: 'fa fa-plus',
-                                    label: 'Thêm thanh toán',
-                                },
-                                {
-                                    to: '/purchases/view_payment/__ID__',
-                                    icon: 'fal fa-money-bill-alt',
-                                    label: 'Xem thanh toán',
-                                }
-                            ]}
+                            
                         />
                     </div>
+                    <MyPagination pageData={pageData} setPage={setPage}/>
 
                 </div>
             </div>

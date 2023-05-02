@@ -4,7 +4,7 @@ import Icon from '../Icon';
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import lang from '../../lang/vi';
-import PurchaseModel from '../../models/PurchaseModel';
+import ReturnPurchaseModel from '../../models/ReturnPurchaseModel';
 import WarehouseModel from '../../models/WarehouseModel';
 import SupplierModel from '../../models/SupplierModel';
 import MyProductFinding from '../global/MyProductFinding';
@@ -22,7 +22,9 @@ function MyForm(props) {
     const [formData, setFormData] = useState({
         paid_amount: 0,
         grand_total: 0,
-        warehouse_id: 0
+        warehouse_id: 0,
+        return_note: '',
+        staff_note: '',
     });
     const [warehouses, setWarehouses] = useState([]);
     const [suppliers, setSuppliers] = useState([]);
@@ -45,7 +47,7 @@ function MyForm(props) {
         }).catch(err => { alert(err.message); });
 
         if (id) {
-            PurchaseModel.find(id).then(res => {
+            ReturnPurchaseModel.find(id).then(res => {
                 setFormData(res.data);
                 caculateTotalAndSetProducts(res.data.products)
             }).catch(err => { alert(err.message); });
@@ -68,20 +70,20 @@ function MyForm(props) {
             return false;
         }
         if (id) {
-            PurchaseModel.update(id, values).then(res => {
+            ReturnPurchaseModel.update(id, values).then(res => {
                 if (res.success) {
                     alert(lang.saved)
-                    navigate('/purchases')
+                    navigate('/return-purchase')
                 } else {
                     alert(res.msg)
                 }
             }).catch(err => { console.log(err.message); });
         } else {
             
-            PurchaseModel.store(values).then(res => {
+            ReturnPurchaseModel.store(values).then(res => {
                 if (res.success) {
                     alert(lang.saved)
-                    navigate('/purchases')
+                    navigate('/return-purchase')
                 } else {
                     alert(res.msg)
                 }
@@ -174,16 +176,16 @@ function MyForm(props) {
                                 ) : null}
                             </div>
                             <div className="mb-2">
-                                <label>Ghi chú nhập hàng</label>
-                                <Field as="textarea" name="note" className="form-control"></Field>
-                                {errors.note && touched.note ? (
-                                    <div className='validation-invalid-label'>{errors.note}</div>
+                                <label>Ghi chú trả hàng</label>
+                                <Field as="textarea" name="return_note" className="form-control"></Field>
+                                {errors.return_note && touched.return_note ? (
+                                    <div className='validation-invalid-label'>{errors.return_note}</div>
                                 ) : null}
                             </div>
                         </div>
                         <div className='col-md-6'>
                             <div className="mb-2">
-                                <label>Số tiền phải thu</label>
+                                <label>Số tiền nhận lại</label>
                                 <Field name="grand_total" value={totalSubTotal} className="form-control"></Field>
                                 {errors.grand_total && touched.grand_total ? (
                                     <div className='validation-invalid-label'>{errors.grand_total}</div>
@@ -197,10 +199,10 @@ function MyForm(props) {
                                 ) : null}
                             </div>
                             <div className="mb-2">
-                                <label>Ghi chú thanh toán</label>
-                                <Field as="textarea" name="note_payment" className="form-control"></Field>
-                                {errors.note_payment && touched.note_payment ? (
-                                    <div className='validation-invalid-label'>{errors.note_payment}</div>
+                                <label>Nhân viên ghi chú</label>
+                                <Field as="textarea" name="staff_note" className="form-control"></Field>
+                                {errors.staff_note && touched.staff_note ? (
+                                    <div className='validation-invalid-label'>{errors.staff_note}</div>
                                 ) : null}
                             </div>
                         </div>

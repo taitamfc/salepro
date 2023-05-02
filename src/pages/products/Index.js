@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import MyTable from '../../components/global/MyTable';
 import lang from '../../lang/vi';
+import MyPagination from '../../components/global/MyPagination';
 
 function Index(props) {
     const [loading,setLoading] = useState(true);
@@ -93,7 +94,7 @@ function Index(props) {
                             handleDelete={handleDelete}
                         />
                     </div>
-
+                    <MyPagination pageData={pageData} setPage={setPage}/>
                 </div>
             </div>
 

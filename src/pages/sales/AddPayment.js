@@ -2,18 +2,18 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import MasterLayout from '../../layouts/MasterLayout';
 import Breadcrumb from '../../includes/page/Breadcrumb';
-import MyForm from '../../components/return-purchase/MyForm';
+import AddPaymentForm from '../../components/sales/AddPaymentForm';
 
-function Create(props) {
+function AddPayment(props) {
     const { id = 0 } = useParams();
     return (
         <MasterLayout>
             <div className='page-header'>
-                <Breadcrumb pageName='Trả hàng nhập' parentName='Trả hàng nhập' parentLink='return-purchase' />
+                <Breadcrumb pageName='Thêm thanh toán' parentName='Công nợ' parentLink='report/due' />
             </div>
-            <MyForm id={id}/>
+            <AddPaymentForm id={id}/>
         </MasterLayout>
     );
 }
 
-export default Create;
+export default AddPayment;

@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 
 // const Admin = React.lazy(() => import('./pages/admin/Index'))
 
-import Admin from './pages/admin/Index';
+import Admin from './pages/home/Index';
 import Product from './pages/products/Index';
 import ProductCreate from './pages/products/Create';
 
@@ -37,12 +37,15 @@ import AdjustmentCreate from './pages/adjustment/Create';
 
 import Sale from './pages/sales/Index';
 import SaleCreate from './pages/sales/Create';
+import SaleAddPayment from './pages/sales/AddPayment';
 
 import ReturnSale from './pages/return-sale/Index';
 import ReturnSaleCreate from './pages/return-sale/Create';
 
 import ReturnPurchase from './pages/return-purchase/Index';
 import ReturnPurchaseCreate from './pages/return-purchase/Create';
+
+import ReportDue from './pages/report/ReportDue';
 
 function App() {
   return (
@@ -81,12 +84,15 @@ function App() {
 
         <Route path="/sales" element={<Sale />} />
         <Route path="/sales/create/:id?" element={<SaleCreate />} />
+        <Route path="/sales/add_payment/:id?" element={<SaleAddPayment />} />
 
         <Route path="/return-sale" element={<ReturnSale />} />
         <Route path="/return-sale/create/:id?" element={<ReturnSaleCreate />} />
 
         <Route path="/return-purchase" element={<ReturnPurchase />} />
         <Route path="/return-purchase/create/:id?" element={<ReturnPurchaseCreate />} />
+
+        <Route path="/report/due" element={<ReportDue/>} />
 
       </Routes>
     </>

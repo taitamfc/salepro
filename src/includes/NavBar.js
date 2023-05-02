@@ -80,10 +80,7 @@ function NavBar(props) {
                                     <i className="fal fa-arrow-square-right" />
                                     Trả hàng từ nhập
                                 </Link>
-                                <Link to={'/accounts/balancesheet'} className='dropdown-item'>
-                                    <i className="fal fa-money-bill-alt" />
-                                    Công nợ
-                                </Link>
+                                
                             </div>
                         </li>
                         <li className="nav-item dropdown ">
@@ -110,9 +107,13 @@ function NavBar(props) {
                         <li className="nav-item dropdown ">
                             <Link to={'#'} data-toggle='dropdown' className='navbar-nav-link dropdown-toggle'>Báo cáo</Link>
                             <div className="dropdown-menu">
-                                <Link to={'/accounts/balancesheet'} className='dropdown-item'>
-                                    <i className="fal fa-money-bill-alt" />
+                                <Link to={'/report/balancesheet'} className='dropdown-item'>
+                                    <i className="fal fa-chart-bar fa-lg" />
                                     Doanh thu
+                                </Link>
+                                <Link to={'/report/due'} className='dropdown-item'>
+                                    <i className="fal fa-money-bill-alt" />
+                                    Công nợ
                                 </Link>
                             </div>
                         </li>

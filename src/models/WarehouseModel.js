@@ -4,13 +4,13 @@ class WarehouseModel {
     constructor(){
         this.api_url = API_URL + 'warehouse';
     }
-    async all(params = {}){
-        const data = await axiosClient.get(this.api_url,params);
-        return data;
+    async all(data = {}){
+        const res = await axiosClient.get(this.api_url,{ params: data });
+        return res;
     }
     async find(id){
-        const data = await axiosClient.get(this.api_url + '/' + id);
-        return data;
+        const res = await axiosClient.get(this.api_url + '/' + id);
+        return res;
     }
 
     async store(data){

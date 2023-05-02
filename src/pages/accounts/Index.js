@@ -6,6 +6,7 @@ import AccountModel from '../../models/AccountModel';
 import Breadcrumb from '../../includes/page/Breadcrumb';
 import { Link } from 'react-router-dom';
 import MyTable from '../../components/global/MyTable';
+import MyPagination from '../../components/global/MyPagination';
 
 function Index(props) {
     const [loading,setLoading] = useState(true);
@@ -77,6 +78,7 @@ function Index(props) {
                             base_link={'accounts'}
                         />
                     </div>
+                    <MyPagination pageData={pageData} setPage={setPage}/>
                 </div>
             </div>
         </MasterLayout>
