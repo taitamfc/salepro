@@ -2,10 +2,12 @@ import React from 'react';
 
 function MyPagination(props) {
     const {pageData,setPage} = props;
-    console.log(pageData);
     let pageNumbers = [];
     for(let i = 1; i <= pageData.last_page;i++){
         pageNumbers.push(i);
+    }
+    if(pageData.total == 0){
+        return <></>
     }
     return (
         <div className="card-footer d-flex">

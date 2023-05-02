@@ -76,7 +76,7 @@ function MyTable(props) {
                     loading ? (
                         <LoadingTable colSpan={ cols.length + 2 }/>
                     ) : 
-                    items.map( (item,key) => (
+                    items.length ? items.map( (item,key) => (
                         <tr className={'row-item ' + ( isCheck.includes(item.id) ? 'selected' : '' ) } key={key}>
                             { 
                                 col_checkbox && ( 
@@ -129,7 +129,8 @@ function MyTable(props) {
                             ) }
                             
                         </tr>
-                    ))
+                    )) :
+                    <LoadingTable colSpan={ cols.length + 2 } msg={'Không có dữ liệu'}/>
                 }
             </tbody>
         </table>
