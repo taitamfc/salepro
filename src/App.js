@@ -7,6 +7,7 @@ import { Route, Routes } from 'react-router-dom';
 import Admin from './pages/home/Index';
 import Product from './pages/products/Index';
 import ProductCreate from './pages/products/Create';
+import ProductCreateFromExcel from './pages/products/CreateFromExcel';
 
 import Category from './pages/categories/Index';
 import CategoryCreate from './pages/categories/Create';
@@ -54,6 +55,7 @@ function App() {
         <Route path="/" element={<Admin />} />
         <Route path="/products" element={<Product />} />
         <Route path="/products/create/:id?" element={<ProductCreate />} />
+        <Route path="/products/createFromExcel/:id?" element={<ProductCreateFromExcel />} />
 
         <Route path="/categories" element={<Category />} />
         <Route path="/categories/create/:id?" element={<CategoryCreate />} />

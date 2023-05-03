@@ -1,5 +1,6 @@
 import {API_URL} from '../env';
 import axiosClient from './axiosClient';
+import axios from "axios";
 class ProductModel {
     constructor(){
         this.api_url = API_URL + 'products';
@@ -29,6 +30,10 @@ class ProductModel {
     async delete(id){
         const data = await axiosClient.delete(this.api_url + '/' + id);
         return data;
+    }
+    async processImport(data){
+        const res = await axios.post(this.api_url + '/processImport',data);
+        return res;
     }
 }
 

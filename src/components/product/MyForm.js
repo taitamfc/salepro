@@ -4,6 +4,8 @@ import Icon from '../Icon';
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import lang from '../../lang/vi';
+import { NumericFormat } from 'react-number-format';
+
 
 import ProductModel from '../../models/ProductModel';
 import CategoryModel from '../../models/CategoryModel';
@@ -81,6 +83,13 @@ function MyForm(props) {
         }
     }
 
+    const handleInputChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+    }
+
     return (
         <Formik
             enableReinitialize={true}
@@ -89,12 +98,12 @@ function MyForm(props) {
             onSubmit={values => handleSubmit(values)}
         >
             {({ errors, touched}) => (
-                <Form className='content'>
+                <Form className='content card p-3'>
                     <Field type='hidden' name="type"/>
                     <Field type='hidden' name="barcode_symbology"/>
                     <div className='row'>
                         <div className='col-md-6'>
-                            <div className='card p-3'>
+                            <div className=''>
                                 <div className="row">
                                     <div className='col-md-12'>
                                         <div className="mb-2">
@@ -125,7 +134,8 @@ function MyForm(props) {
                                     <div className='col-md-6'>
                                         <div className="mb-2">
                                             <label>Giá nhập *</label>
-                                            <Field name="cost" className="form-control" />
+                                            {/* <Field name="cost" className="form-control" /> */}
+                                            <NumericFormat name="cost" thousandSeparator="," className="form-control" value={formData.cost} onChange={handleInputChange} />
                                             {errors.cost && touched.cost ? (
                                                 <div className='validation-invalid-label'>{errors.cost}</div>
                                             ) : null}
@@ -134,7 +144,7 @@ function MyForm(props) {
                                     <div className='col-md-6'>
                                         <div className="mb-2">
                                             <label>Giá bán *</label>
-                                            <Field name="price" className="form-control" />
+                                            <NumericFormat name="price" thousandSeparator="," className="form-control" value={formData.price} onChange={handleInputChange} />
                                             {errors.price && touched.price ? (
                                                 <div className='validation-invalid-label'>{errors.price}</div>
                                             ) : null}
@@ -144,7 +154,7 @@ function MyForm(props) {
                             </div>
                         </div>
                         <div className='col-md-6'>
-                            <div className='card p-3'>
+                            <div className=''>
                                 <div className="mb-2">
                                     <label>Danh mục</label>
                                     <Field as="select" name="category_id" className="form-control">

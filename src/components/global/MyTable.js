@@ -98,9 +98,9 @@ function MyTable(props) {
                                     
                                     <td className='text-center'>
                                         { item['is_active'] ? 
-                                            <i title='Nhấn vào để tắt' className="fal icon cursor-pointer fa-check text-success"></i>
+                                            <i onClick={() => props.handleEnableDisable(item.id,0)} title='Nhấn vào để tắt' className="fal icon cursor-pointer fa-check text-success"></i>
                                             :
-                                            <i title='Nhấn vào để bật' className="fal icon cursor-pointer fa-minus-circle text-danger"></i>
+                                            <i onClick={() => props.handleEnableDisable(item.id,1)} title='Nhấn vào để bật' className="fal icon cursor-pointer fa-minus-circle text-danger"></i>
                                         }
                                     </td>
                                 )

@@ -20,7 +20,10 @@ function Index(props) {
     const [loading, setLoading] = useState(true);
     const [items, setItems] = useState([]);
     const [page, setPage] = useState(1);
-    const [filter, setFilter] = useState({});
+    const [activeTab, setActiveTab] = useState('index');
+    const [filter, setFilter] = useState({
+        is_active: 1
+    });
     const [pageData, setPageData] = useState({});
 
     const [warehouses, setWarehouses] = useState([]);
@@ -64,12 +67,38 @@ function Index(props) {
             })
         }
     }
+    const handleEnableDisable = (id, active) => {
+        let check = window.confirm('Bạn có chắc chắn thay đổi #' + id);
+        if (check) {
+            console.log(id,active);
+        }
+    }
     const handleChangeFilter = (event) => {
         setPage(1);
         setFilter({
             ...filter,
             [event.target.name]: event.target.value
         });
+    }
+
+    const handleChangeTab = (tab) => {
+        setActiveTab(tab);
+        switch (tab) {
+            case 'index':
+                setFilter({
+                    ...filter,
+                    is_active: 1
+                });
+                break;
+            case 'trash':
+                setFilter({
+                    ...filter,
+                    is_active: 2
+                });
+                break;
+            default:
+                break;
+        }
     }
 
     return (
@@ -82,7 +111,14 @@ function Index(props) {
                             <div className='card-header p-0 '>
                                 <ul className='nav nav-tabs nav-tabs-highlight mb-0 navTabTopFilter'>
                                     <li className='nav-item'>
-                                        <a href="#" className="nav-link active px-3">Bộ lọc</a>
+                                        <Link onClick={ () => handleChangeTab('index') } className={activeTab == 'index' ? 'nav-link active px-3' : 'nav-link px-3'}>
+                                            Bộ lọc
+                                        </Link>
+                                    </li>
+                                    <li className='nav-item'>
+                                        <Link onClick={ () => handleChangeTab('trash') } className={activeTab == 'trash' ? 'nav-link active px-3' : 'nav-link px-3'}>
+                                            Sản phẩm đã xóa
+                                        </Link>
                                     </li>
                                 </ul>
                             </div>
@@ -201,6 +237,7 @@ function Index(props) {
                             actions={['Sửa', 'Xóa']}
                             base_link={'products'}
                             handleDelete={handleDelete}
+                            handleEnableDisable={handleEnableDisable}
                         />
                     </div>
                     <MyPagination pageData={pageData} setPage={setPage} />
