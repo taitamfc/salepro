@@ -41,7 +41,7 @@ function MyForm(props) {
 
     // contructor
     useEffect(() => {
-        WarehouseModel.all({ limit: -1, search: { is_active: 1 } }).then(res => {
+        WarehouseModel.all({ onlyActive: true, limit: -1 }).then(res => {
             setWarehouses(res.data);
         }).catch(err => { alert(err.message); });
      

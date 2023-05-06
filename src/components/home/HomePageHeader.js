@@ -4,6 +4,7 @@ import { SET_FILTER_HOME } from '../../redux/action';
 import WarehouseModel from '../../models/WarehouseModel';
 
 function HomePageHeader(props) {
+    const {pageName} = props
     const dispatch = useDispatch();
     const [dayLabel,setDayLabel] = useState('Tháng này');
     const [dayValue,setDayValue] = useState('thismonth');
@@ -37,7 +38,7 @@ function HomePageHeader(props) {
                 <div className="page-title d-flex">
                     <h4>
                         <i className="fal fa-tachometer-alt mr-2" />
-                        <span className="font-weight-semibold">Trang tổng quan ({dayLabel})</span>
+                        <span className="font-weight-semibold">{pageName} ({dayLabel})</span>
                     </h4>
                     <a href="#" className="header-elements-toggle text-default d-md-none">
                         <i className="fas fa-ellipsis-v" />
@@ -123,5 +124,7 @@ function HomePageHeader(props) {
         </div>
     );
 }
-
+HomePageHeader.defaultProps = {
+    pageName: 'Trang tổng quan'
+}
 export default HomePageHeader;

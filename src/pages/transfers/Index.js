@@ -7,13 +7,24 @@ import Breadcrumb from '../../includes/page/Breadcrumb';
 import { Link } from 'react-router-dom';
 import MyTable from '../../components/global/MyTable';
 import MyPagination from '../../components/global/MyPagination';
+import lang from '../../lang/vi';
+import WarehouseModel from '../../models/WarehouseModel';
 
 function Index(props) {
     const [loading,setLoading] = useState(true);
     const [items,setItems] = useState([]);
     const [page,setPage] = useState(1);
-    const [filter,setFilter] = useState({});
+    const [activeTab, setActiveTab] = useState('index');
+    const [filter,setFilter] = useState({ is_active: 1 });
     const [pageData,setPageData] = useState({});
+
+    const [warehouses, setWarehouses] = useState([]);
+    useEffect(() => {
+        WarehouseModel.all({ onlyActive: true, limit: -1 }).then(res => {
+            setWarehouses(res.data);
+        }).catch(err => { alert(err.message); });
+    }, []);
+
     useEffect( () => {
         TransferModel.all({
             page: page,
@@ -25,31 +36,151 @@ function Index(props) {
         } )
     }, [page,filter]);
 
+    const handleDelete = (id,title = '') => {
+        title = title ? title : id;
+        let check = window.confirm('Bạn có chắc chắn xóa #'+id);
+        if(check){
+            TransferModel.delete(id).then( res => {
+                alert(lang.deleted);
+                setLoading(true);
+            })
+        }
+    }
+    const handleEnableDisable = (id, active) => {
+        let check = window.confirm('Bạn có chắc chắn thay đổi #' + id);
+        if (check) {
+            TransferModel.changeStatus(id, active).then( res => {
+                alert(lang.saved);
+                setLoading(true);
+            })
+        }
+    }
+    const handleChangeFilter = (event) => {
+        setPage(1);
+        setFilter({
+            ...filter,
+            [event.target.name]: event.target.value
+        });
+    }
+
+    const handleChangeTab = (tab) => {
+        setActiveTab(tab);
+        switch (tab) {
+            case 'index':
+                setFilter({
+                    ...filter,
+                    is_active: 1
+                });
+                break;
+            case 'trash':
+                setFilter({
+                    ...filter,
+                    is_active: 2
+                });
+                break;
+            default:
+                break;
+        }
+    }
+
     return (
         <MasterLayout>
             <div className='page-header'>
                 <Breadcrumb pageName='Chuyển kho' parentName='Chuyển kho' parentLink='transfers' />
                 <div id='filterArea' className='content p-0'>
                     <div id='boxFilters' className='mb-0 border-0 card'>
-                        <form>
+                        <form onChange={handleChangeFilter}>
                             <div className='card-header p-0 '>
                                 <ul className='nav nav-tabs nav-tabs-highlight mb-0 navTabTopFilter'>
                                     <li className='nav-item'>
-                                        <a href="#" className="nav-link active px-3">Bộ lọc</a>
+                                        <Link onClick={ () => handleChangeTab('index') } className={activeTab == 'index' ? 'nav-link active px-3' : 'nav-link px-3'}>
+                                            Bộ lọc
+                                        </Link>
                                     </li>
-                                    <li className="nav-item">
-                                        <a href="" className="nav-link px-2 show " title="">Có sửa giá bán</a>
-                                    </li>
+                                    {/* <li className='nav-item'>
+                                        <Link onClick={ () => handleChangeTab('trash') } className={activeTab == 'trash' ? 'nav-link active px-3' : 'nav-link px-3'}>
+                                            Đã xóa
+                                        </Link>
+                                    </li> */}
                                 </ul>
                             </div>
                             <div className='card-body pt-0 background-horizontal pb-1'>
-                                ahaha
+                                <div className='row'>
+                                    <div className='col-6 col-md-3 col-lg-2 pr-1'>
+                                        <div className='form-group input-group mb-0 pt-3'>
+                                            <input type="text" name="reference_no" placeholder="Mã" className="form-control" />
+                                        </div>
+                                    </div>
+                                    <div className='col-6 col-md-3 col-lg-2 pr-1'>
+                                        <div className='form-group input-group mb-0 pt-3'>
+                                            <select className='form-control' name='from_warehouse_id'>
+                                                <option value="">Từ kho</option>
+                                                {
+                                                    warehouses.map((warehouse, key) => (
+                                                        <option key={key} value={warehouse.id}>{warehouse.name}</option>
+                                                    ))
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div className='col-6 col-md-3 col-lg-2 pr-1'>
+                                        <div className='form-group input-group mb-0 pt-3'>
+                                            <select className='form-control' name='to_warehouse_id'>
+                                                <option value="">Đến kho</option>
+                                                {
+                                                    warehouses.map((warehouse, key) => (
+                                                        <option key={key} value={warehouse.id}>{warehouse.name}</option>
+                                                    ))
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div className="col-6 col-md-3 col-lg-3 pr-1">
+                                        <div className="form-group input-group mb-0 pt-3">
+                                            <div className="p-0">
+                                                <div className="row m-0 input-group">
+                                                    <input
+                                                        type="date"
+                                                        name="fromDate"
+                                                        className="form-control tbDatePicker col-6"
+                                                        maxLength={255}
+                                                        autoComplete="off"
+                                                        placeholder="Từ"
+                                                        id="fromDate"
+                                                        defaultValue="23/04/2023"
+                                                    />
+                                                    <input
+                                                        type="date"
+                                                        name="toDate"
+                                                        className=" form-control tbDatePicker col-6"
+                                                        maxLength={255}
+                                                        autoComplete="off"
+                                                        placeholder="Đến"
+                                                        id="toDate"
+                                                        defaultValue="03/05/2023"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className='col-6 col-md-3 col-lg-2 pr-1'>
+                                        <div className='form-group input-group mb-0 pt-3'>
+                                            <select className='form-control' name='status'>
+                                                <option value="">Trạng thái</option>
+                                                <option value="1">Hoàn thành</option>
+                                                <option value="2">Chờ xử lý</option>
+                                                <option value="3">Đã gửi</option>
+                                                
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-            <div className='content'>
+            <div className='content p-0'>
                 <div className='card border-0'>
                     <div className='card-header bgHeaderFilter-light header-elements-inline dg-header '>
                         <div className='header-elements'>
@@ -72,11 +203,13 @@ function Index(props) {
                         <MyTable 
                             items={items} 
                             loading={loading} 
-                            headers={['Mã','Từ kho','Đến kho','Số sản phẩm','Tổng tiền','Trạng thái']} 
-                            cols={['reference_no','from_warehouse_name','to_warehouse_name','item','grand_total','status_name']}
+                            headers={['Mã','Từ kho','Đến kho','Thời gian','Số sản phẩm','Tổng tiền','Trạng thái']} 
+                            cols={['reference_no','from_warehouse_name','to_warehouse_name','created_at_format','item','grand_total_format','status_name']}
                             actions={['Sửa','Xóa']}
                             base_link={'transfers'}
                             col_active={false}
+                            handleDelete={handleDelete}
+                            handleEnableDisable={handleEnableDisable}
                         />
                     </div>
                     <MyPagination pageData={pageData} setPage={setPage}/>

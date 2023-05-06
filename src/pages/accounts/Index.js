@@ -12,7 +12,7 @@ function Index(props) {
     const [loading,setLoading] = useState(true);
     const [items,setItems] = useState([]);
     const [page,setPage] = useState(1);
-    const [filter,setFilter] = useState({});
+    const [filter,setFilter] = useState({ is_active: 1 });
     const [pageData,setPageData] = useState({});
     useEffect( () => {
         AccountModel.all({

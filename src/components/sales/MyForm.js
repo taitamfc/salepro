@@ -6,12 +6,12 @@ import * as Yup from "yup";
 import lang from '../../lang/vi';
 import SaleModel from '../../models/SaleModel';
 import WarehouseModel from '../../models/WarehouseModel';
-import SupplierModel from '../../models/SupplierModel';
 import MyProductFinding from '../global/MyProductFinding';
 import ProductModel from '../../models/ProductModel';
 import { SET_WAREHOUSE_ID } from '../../redux/action';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { NumericFormat } from 'react-number-format';
+import MyNumberFormat from '../global/MyNumberFormat';
 const rules = Yup.object().shape({
     warehouse_id: Yup.number().min(1,lang.required),
     customer_name: Yup.string().required(lang.required),
@@ -44,7 +44,7 @@ function MyForm(props) {
         dispatch({ type: SET_WAREHOUSE_ID, payload: 0 });
         setShippingCost(0);
         
-        WarehouseModel.all({ limit: -1, search: { is_active: 1 } }).then(res => {
+        WarehouseModel.all({ onlyActive: true, limit: -1 }).then(res => {
             setWarehouses(res.data);
         }).catch(err => { alert(err.message); });
 
@@ -307,10 +307,10 @@ function MyForm(props) {
                                                     {/* <Field type='hidden' name='paid_amount' value={0}/> */}
                                                     <Field type='hidden' name='status' value={1}/>
                                                 </th>
-                                                <th id="total-qty">{totalQty}</th>
-                                                <th>{totalPrice}</th>
-                                                <th id="total-discount">{totalPricePromo}</th>
-                                                <th id="total">{totalPrice}</th>
+                                                <th id="total-qty"><MyNumberFormat value={totalQty}/></th>
+                                                <th><MyNumberFormat value={totalPrice}/></th>
+                                                <th id="total-discount"><MyNumberFormat value={totalPricePromo}/></th>
+                                                <th id="total"><MyNumberFormat value={totalPrice}/></th>
                                                 <th className='text-center'>
                                                     <i className="fal fa-trash" />
                                                 </th>

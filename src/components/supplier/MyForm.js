@@ -47,10 +47,10 @@ function MyForm(props) {
             onSubmit={values => handleSubmit(values)}
         >
         {({ errors, touched}) => (
-            <Form className='content'>
+            <Form className='content card p-3'>
                 <div className='row'>
                     <div className='col-md-6'>
-                        <div className='card p-3'>
+                        <div className=''>
                             <div className="mb-2">
                                 <label>Tên * </label>
                                 <Field name="name" className="form-control" />

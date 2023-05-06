@@ -12,7 +12,7 @@ import WarehouseModel from '../../models/WarehouseModel';
 import SupplierModel from '../../models/SupplierModel';
 
 
-function Index(props) {
+function ReportDuePurchase(props) {
     const [loading, setLoading] = useState(true);
     const [items, setItems] = useState([]);
     const [page, setPage] = useState(1);
@@ -32,7 +32,7 @@ function Index(props) {
 
     }, []);
     useEffect(() => {
-        PurchaseModel.all({
+        PurchaseModel.getDue({
             page: page,
             filter: filter
         }).then(res => {
@@ -95,7 +95,7 @@ function Index(props) {
     return (
         <MasterLayout>
             <div className='page-header'>
-                <Breadcrumb pageName='Nhập kho' parentName='Nhập kho' parentLink='purchases' />
+                <Breadcrumb pageName='Công nợ nhập hàng' parentName='Công nợ nhập hàng' parentLink='report/due-purchase' />
                 <div id='filterArea' className='content p-0'>
                     <div id='boxFilters' className='mb-0 border-0 card'>
                         <form onChange={handleChangeFilter}>
@@ -177,18 +177,6 @@ function Index(props) {
             <div className='content p-0'>
                 <div className='card border-0'>
                     <div className='card-header bgHeaderFilter-light header-elements-inline dg-header '>
-                        <div className='header-elements'>
-                            <div className='btn-group mr-2'>
-                                <button className='dropdown-toggle btn btn-md  bg-success' data-toggle="dropdown">
-                                    Thêm mới
-                                </button>
-                                <div className='dropdown-menu'>
-                                    <Link to={'/purchases/create'} className='dropdown-item'>
-                                        <i className='fal fa-plus mr-2'></i>Thêm mới
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
                         <div className='header-elements ml-auto'>
                             <div className="d-none d-lg-flex align-items-center">{pageData.from} - {pageData.current_page} / {pageData.last_page}</div>
                         </div>
@@ -222,4 +210,4 @@ function Index(props) {
     );
 }
 
-export default Index;
+export default ReportDuePurchase;

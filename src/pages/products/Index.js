@@ -21,9 +21,7 @@ function Index(props) {
     const [items, setItems] = useState([]);
     const [page, setPage] = useState(1);
     const [activeTab, setActiveTab] = useState('index');
-    const [filter, setFilter] = useState({
-        is_active: 1
-    });
+    const [filter,setFilter] = useState({ is_active: 1 });
     const [pageData, setPageData] = useState({});
 
     const [warehouses, setWarehouses] = useState([]);
@@ -63,14 +61,17 @@ function Index(props) {
         if (check) {
             ProductModel.delete(id).then(res => {
                 alert(lang.deleted);
-                setLoading(true);
+                setLoading(Math.random());
             })
         }
     }
     const handleEnableDisable = (id, active) => {
         let check = window.confirm('Bạn có chắc chắn thay đổi #' + id);
         if (check) {
-            console.log(id,active);
+            ProductModel.changeStatus(id, active).then( res => {
+                alert(lang.saved);
+                setLoading(Math.random());
+            })
         }
     }
     const handleChangeFilter = (event) => {
@@ -165,7 +166,7 @@ function Index(props) {
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-6 col-md-3 col-lg-1 pr-1">
+                                    <div className="col-6 col-md-3 col-lg-1 pr-1">
                                         <div className='form-group input-group mb-0 pt-3'>
                                             <select name="unit_id" className="form-control">
                                                 <option value="">Đơn vị</option>
@@ -177,7 +178,7 @@ function Index(props) {
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-6 col-md-3 col-lg-1 pr-1">
+                                    <div className="col-6 col-md-3 col-lg-1 pr-1">
                                         <div className='form-group input-group mb-0 pt-3'>
                                             <select name="remain" className="form-control">
                                                 <option value="">- Tồn -</option>
@@ -186,7 +187,7 @@ function Index(props) {
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-6 col-md-3 col-lg-2 pr-1">
+                                    <div className="col-6 col-md-3 col-lg-2 pr-1">
                                         <div className='form-group input-group mb-0 pt-3'>
                                             <select name="is_active" className="form-control">
                                                 <option value="">- Trạng thái bán -</option>
@@ -195,9 +196,9 @@ function Index(props) {
                                             </select>
                                         </div>
                                     </div>
-                                    {/* <div class="col-1 pt-3">
-                                        <div class="btn-group dropdown">
-                                            <button type="submit" class="btn submitFilterBtn bg-teal-400">Lọc</button>
+                                    {/* <div className="col-1 pt-3">
+                                        <div className="btn-group dropdown">
+                                            <button type="submit" className="btn submitFilterBtn bg-teal-400">Lọc</button>
                                         </div>
                                     </div> */}
                                 </div>

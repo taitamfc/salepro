@@ -14,6 +14,7 @@ import CategoryCreate from './pages/categories/Create';
 
 import Purchase from './pages/purchases/Index';
 import PurchaseCreate from './pages/purchases/Create';
+import PurchaseAddPayment from './pages/purchases/AddPayment';
 
 import Unit from './pages/unit/Index';
 import UnitCreate from './pages/unit/Create';
@@ -39,6 +40,7 @@ import AdjustmentCreate from './pages/adjustment/Create';
 import Sale from './pages/sales/Index';
 import SaleCreate from './pages/sales/Create';
 import SaleAddPayment from './pages/sales/AddPayment';
+import SaleGenInvoice from './pages/sales/GenInvoice';
 
 import ReturnSale from './pages/return-sale/Index';
 import ReturnSaleCreate from './pages/return-sale/Create';
@@ -46,7 +48,11 @@ import ReturnSaleCreate from './pages/return-sale/Create';
 import ReturnPurchase from './pages/return-purchase/Index';
 import ReturnPurchaseCreate from './pages/return-purchase/Create';
 
-import ReportDue from './pages/report/ReportDue';
+import ReportDueSale from './pages/report/ReportDue';
+import ReportDuePurchase from './pages/report/ReportDuePurchase';
+import ReportProfitLoss from './pages/report/ReportProfitLoss';
+
+import SettingStore from './pages/setting/Store'; 
 
 function App() {
   return (
@@ -62,6 +68,7 @@ function App() {
 
         <Route path="/purchases" element={<Purchase />} />
         <Route path="/purchases/create/:id?" element={<PurchaseCreate />} />
+        <Route path="/purchases/add_payment/:id?" element={<PurchaseAddPayment />} />
 
         <Route path="/transfers" element={<Transfers />} />
         <Route path="/transfers/create/:id?" element={<TransferCreate />} />
@@ -87,6 +94,7 @@ function App() {
         <Route path="/sales" element={<Sale />} />
         <Route path="/sales/create/:id?" element={<SaleCreate />} />
         <Route path="/sales/add_payment/:id?" element={<SaleAddPayment />} />
+        <Route path="/sales/gen_invoice/:id?" element={<SaleGenInvoice />} />
 
         <Route path="/return-sale" element={<ReturnSale />} />
         <Route path="/return-sale/create/:id?" element={<ReturnSaleCreate />} />
@@ -94,7 +102,11 @@ function App() {
         <Route path="/return-purchase" element={<ReturnPurchase />} />
         <Route path="/return-purchase/create/:id?" element={<ReturnPurchaseCreate />} />
 
-        <Route path="/report/due" element={<ReportDue/>} />
+        <Route path="/report/profit-loss" element={<ReportProfitLoss/>} />
+        <Route path="/report/due" element={<ReportDueSale/>} />
+        <Route path="/report/due-purchase" element={<ReportDuePurchase/>} />
+
+        <Route path="/setting/store" element={<SettingStore/>} />
 
       </Routes>
     </>

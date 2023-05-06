@@ -1,0 +1,97 @@
+.printPage {
+    background-color: white;
+    /* height: 100vh; */
+}
+.printPage .dg {
+    border-top: #4d4d4d 1px solid ;
+    border-right: 1px solid #4d4d4d ;
+}
+
+.printPage .dg th, .printPage .dg td {
+    border: #4d4d4d 1px solid ;
+    border-left: #4d4d4d 1px solid ;
+    text-align: center;
+    padding: 5px;
+}
+
+.printPage .dg thead {
+    border-top: #4d4d4d 1px solid ;
+    border-right: 1px solid #4d4d4d ;
+}
+.page-break-after-print{
+	page-break-after: always;
+}
+.printPage {
+    padding: 30px;
+}
+@media print {
+    @page{
+        size:auto;
+    }
+    .printPage {
+        padding: unset;
+    }
+    .table-bordered td, .table-bordered th {
+        border: 1px solid black !important;
+    }
+    div {
+        page-break-after: avoid;
+    }
+    body {
+        min-width: 150px !important;
+    }
+    img {
+        max-width: 100%;
+    }
+    #headerPrint {
+        display: none;
+    }
+}
+/* Custom CSS */
+.printWrapper{
+    margin:0 auto;font-size: 14px;line-height: normal !important;
+}
+.printBody {
+    padding: 5px 2px;
+}
+.printHeader {
+    padding: 8px 0; text-align: center;
+}
+.printHeader h4{
+    text-transform: uppercase;
+}
+.printTitle{
+    padding: 8px 0 0; text-align: center; text-transform: uppercase;
+}
+.prlist {
+    width: 100%;
+}
+.prlist th, .prlist td {
+    text-align: right;
+}
+.prlist td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.prlist thead tr th {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+.prlist tfoot tr th {
+    padding-top: 10px;
+}
+.prlist tbody tr td {
+    border-bottom: 1px dashed #ccc;
+}
+.printFoot {
+    padding: 8px 0 5px; text-align: center; border-top: 1px solid #444
+}
+.printFoot h4 {
+    text-transform: uppercase;
+}
+.printNote {
+    padding:4px 0
+}
+.printCompanyInfo {
+    text-align: center;
+}

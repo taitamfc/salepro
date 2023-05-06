@@ -1,14 +1,12 @@
-import {API_URL} from '../env';
+import MainModel from './MainModel';
 import axiosClient from './axiosClient';
-class HomeModel {
+class HomeModel extends MainModel {
     constructor(){
-        this.api_url = API_URL + 'home';
+        super('home');
     }
     async index(data = {}){
         const res = await axiosClient.get(this.api_url,{ params: data });
         return res;
     }
-    
 }
-
 export default new HomeModel;

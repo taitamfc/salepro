@@ -39,10 +39,10 @@ function MyForm(props) {
     useEffect(() => {
         dispatch({ type: SET_WAREHOUSE_ID, payload: 0 });
         
-        WarehouseModel.all({ limit: -1, search: { is_active: 1 } }).then(res => {
+        WarehouseModel.all({ onlyActive: true, limit: -1 }).then(res => {
             setWarehouses(res.data);
         }).catch(err => { alert(err.message); });
-        SupplierModel.all({ limit: -1, search: { is_active: 1 } }).then(res => {
+        SupplierModel.all({ onlyActive: true, limit: -1 }).then(res => {
             setSuppliers(res.data);
         }).catch(err => { alert(err.message); });
 

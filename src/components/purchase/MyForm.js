@@ -11,6 +11,7 @@ import MyProductFinding from '../global/MyProductFinding';
 import ProductModel from '../../models/ProductModel';
 import { SET_WAREHOUSE_ID } from '../../redux/action';
 import { useDispatch } from 'react-redux';
+import { NumericFormat } from 'react-number-format';
 
 const rules = Yup.object().shape({
     warehouse_id: Yup.number().min(1,lang.required),
@@ -37,10 +38,10 @@ function MyForm(props) {
     useEffect(() => {
         dispatch({ type: SET_WAREHOUSE_ID, payload: 0 });
         
-        WarehouseModel.all({ limit: -1, search: { is_active: 1 } }).then(res => {
+        WarehouseModel.all({ onlyActive: true, limit: -1 }).then(res => {
             setWarehouses(res.data);
         }).catch(err => { alert(err.message); });
-        SupplierModel.all({ limit: -1, search: { is_active: 1 } }).then(res => {
+        SupplierModel.all({ onlyActive: true, limit: -1 }).then(res => {
             setSuppliers(res.data);
         }).catch(err => { alert(err.message); });
 
@@ -184,14 +185,16 @@ function MyForm(props) {
                         <div className='col-md-6'>
                             <div className="mb-2">
                                 <label>Số tiền phải thu</label>
-                                <Field name="grand_total" value={totalSubTotal} className="form-control"></Field>
+                                <NumericFormat name="grand_total" thousandSeparator="," className="form-control" value={totalSubTotal} onChange={handleInputChange} />
+                                {/* <Field name="grand_total" value={totalSubTotal} className="form-control"></Field> */}
                                 {errors.grand_total && touched.grand_total ? (
                                     <div className='validation-invalid-label'>{errors.grand_total}</div>
                                 ) : null}
                             </div>
                             <div className="mb-2">
                                 <label>Số tiền thanh toán</label>
-                                <Field name="paid_amount" className="form-control"></Field>
+                                <NumericFormat name="paid_amount" thousandSeparator="," className="form-control" value={formData.paid_amount} onChange={handleInputChange} />
+                                {/* <Field name="paid_amount" className="form-control"></Field> */}
                                 {errors.paid_amount && touched.paid_amount ? (
                                     <div className='validation-invalid-label'>{errors.paid_amount}</div>
                                 ) : null}
@@ -241,10 +244,13 @@ function MyForm(props) {
                                                             </td>
                                                             <td>{product.code}</td>
                                                             <td><input min={1} className='form-control quantity' style={{width:'80px'}} type='number'  defaultValue={product.cr_qty} onChange={(e)=>handleInputChange(e,product.id,'qty')} name='qty[]'/></td>
-                                                            <td><input min={0} type='number' className='form-control' defaultValue={product.price} onChange={(e)=>handleInputChange(e,product.id,'price')} name='net_unit_cost[]'/></td>
+                                                            <td>
+                                                                <input min={0} type='number' className='form-control' defaultValue={product.price} onChange={(e)=>handleInputChange(e,product.id,'price')} name='net_unit_cost[]'/>
+                                                            </td>
                                                             <td><input min={0} max={product.cr_price} type='number' className='form-control' defaultValue={product.cr_promotion_price} onChange={(e)=>handleInputChange(e,product.id,'promotion_price')} name='discount[]'/></td>
                                                             <td className='thanh-tien'>
-                                                                { sub_total } <input type='hidden' name='subtotal[]' value={sub_total}/>
+                                                                <NumericFormat displayType='text' thousandSeparator=","  value={sub_total}/>
+                                                                <input type='hidden' name='subtotal[]' value={sub_total}/>
                                                             </td>
                                                             <td className='text-center'><i className="fal fa-trash" /></td>
                                                         </tr>
@@ -267,9 +273,9 @@ function MyForm(props) {
                                                     <Field type='hidden' name='status' value={1}/>
                                                 </th>
                                                 <th id="total-qty">{totalQty}</th>
-                                                <th>{totalPrice}</th>
-                                                <th id="total-discount">{totalPricePromo}</th>
-                                                <th id="total">{totalSubTotal}</th>
+                                                <th><NumericFormat displayType='text' thousandSeparator=","  value={totalPrice}/></th>
+                                                <th id="total-discount"><NumericFormat displayType='text' thousandSeparator=","  value={totalPricePromo}/></th>
+                                                <th id="total"><NumericFormat displayType='text' thousandSeparator=","  value={totalSubTotal}/></th>
                                                 <th className='text-center'>
                                                     <i className="fal fa-trash" />
                                                 </th>

@@ -27,7 +27,7 @@ function MyPagination(props) {
                         pageNumbers.map( (pageNumber,key) => {
                             const activeClass = pageData.current_page === pageNumber ? 'page-item active' : 'page-item';
                             return (
-                                <li className={activeClass}>
+                                <li key={key} className={activeClass}>
                                     <a onClick={()=>setPage(pageNumber)} className="page-link cusorPoiter">
                                         {pageNumber}
                                     </a>

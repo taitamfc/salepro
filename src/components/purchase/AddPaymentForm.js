@@ -3,7 +3,7 @@ import Icon from '../Icon';
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import lang from '../../lang/vi';
-import SaleModel from '../../models/SaleModel';
+import PurchaseModel from '../../models/PurchaseModel';
 import { useNavigate } from "react-router-dom";
 import { NumericFormat } from 'react-number-format';
 import MyNumberFormat from '../global/MyNumberFormat';
@@ -29,24 +29,25 @@ function AddPaymentForm(props) {
     // contructor
     useEffect(() => {
         if (id) {
-            SaleModel.find(id).then(res => {
+            PurchaseModel.find(id).then(res => {
                 setFormData( {
                     ...formData,
                     amount: 0,
                     paying_amount: res.data.due,
                     payment_note: res.data.payment_note
-                } );
+                });
+
                 setProducts( res.data.products );
                 setItem( res.data );
             }).catch(err => { alert(err.message); });
 
-            SaleModel.getPayments(id).then(res => {
+            PurchaseModel.getPayments(id).then(res => {
                 setPaymentList(res.data);
             }).catch(err => { alert(err.message); });
         }
     }, [reloadPaymentList]);
 
-    const handleSubmit = () => {
+    const handleSubmit = (values) => {
         if (id) {
             const values = new FormData(document.getElementById('purchaseForm'));
             values.append('paying_amount',formData.paying_amount);
@@ -60,7 +61,7 @@ function AddPaymentForm(props) {
                 return false;
             }
 
-            SaleModel.storePayment(id, values).then(res => {
+            PurchaseModel.storePayment(id, values).then(res => {
                 setReloadPaymentList(Math.random());
                 alert(lang.saved)
             }).catch(err => { alert(err.message); });
@@ -91,8 +92,8 @@ function AddPaymentForm(props) {
                                         <td>{item.reference_no}</td>
                                     </tr>
                                     <tr>
-                                        <td>Khách hàng</td>
-                                        <td>{item.customer_info}</td>
+                                        <td>Nhà cung cấp</td>
+                                        <td>{item.supplier_name}</td>
                                     </tr>
                                     <tr>
                                         <td>Ngày đặt</td>
@@ -100,11 +101,11 @@ function AddPaymentForm(props) {
                                     </tr>
                                     <tr>
                                         <td>Tổng tiền</td>
-                                        <td><MyNumberFormat value={item.grand_total}/></td>
+                                        <td>{item.grand_total_format}</td>
                                     </tr>
                                     <tr>
                                         <td>Đã trả</td>
-                                        <td><MyNumberFormat value={item.paid_amount}/></td>
+                                        <td>{item.paid_amount_format}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -134,7 +135,9 @@ function AddPaymentForm(props) {
                                 </div>
                             </div>
                         </div>
+                        
                         <div className='col-md-6'>
+                            {/* Thông tin mua sắm */}
                             <div className='card-header bg-light py-2 header-elements-inline'>
                                 <div className='card-title font-weight-semibold'>
                                     <i className="fal fa-shopping-cart mr-2"></i>
@@ -156,9 +159,9 @@ function AddPaymentForm(props) {
                                         products.map( ( product,key ) => (
                                             <tr key={key}>
                                                 <td>{product.name}</td>
-                                                <td><MyNumberFormat value={product.price} /></td>
-                                                <td>{product.qty}</td>
-                                                <td><MyNumberFormat value={product.discount}/></td>
+                                                <td><MyNumberFormat value={product.price}/></td>
+                                                <td><MyNumberFormat value={product.qty}/></td>
+                                                <td>{product.discount}</td>
                                                 <td><MyNumberFormat value={product.total}/></td>
                                             </tr>
                                         ))
@@ -166,6 +169,7 @@ function AddPaymentForm(props) {
                                 </tbody>
                             </table>
 
+                            {/* Lịch sử thanh toán */}
                             <div className='card-header bg-light py-2 header-elements-inline'>
                                 <div className='card-title font-weight-semibold'>
                                     <i className="fal fa-money-bill mr-2"></i>
@@ -173,7 +177,7 @@ function AddPaymentForm(props) {
                                 </div>
                             </div>
                             
-                            <table className='table table-bordered table-sm text-nowrap'>
+                            <table className='table table-bordered table-sm text-nowrap mb-2'>
                                 <thead className=''>
                                     <tr className="bg-white">
                                         <th className="text-left">Mã thanh toán</th>
