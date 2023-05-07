@@ -1,2 +1,0 @@
-export const SET_WAREHOUSE_ID = "SET_WAREHOUSE_ID";
-export const SET_FILTER_HOME = "SET_FILTER_HOME";
