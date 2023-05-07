@@ -60,6 +60,28 @@ function MyForm(props) {
                             </div>
                         </div>
                     </div>
+                    <div className='col-md-6'>
+                        <div className=''>
+                            <div className="mb-2">
+                                <label>Số điện thoại</label>
+                                <Field name="phone_number" className="form-control" />
+                                {errors.phone_number && touched.phone_number ? (
+                                    <div className='validation-invalid-label'>{errors.phone_number}</div>
+                                ) : null}
+                            </div>
+                        </div>
+                    </div>
+                    <div className='col-md-6'>
+                        <div className=''>
+                            <div className="mb-2">
+                                <label>Địa chỉ</label>
+                                <Field name="address" className="form-control" />
+                                {errors.address && touched.address ? (
+                                    <div className='validation-invalid-label'>{errors.address}</div>
+                                ) : null}
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div className='row'>
                     <div className='col-md-12'>

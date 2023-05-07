@@ -9,7 +9,7 @@ function Create(props) {
     return (
         <MasterLayout>
             <div className='page-header'>
-                <Breadcrumb pageName='Thêm đơn vị' parentName='Đơn vị' parentLink='unit' />
+                <Breadcrumb pageName='Thêm nhãn hiệu' parentName='Nhãn hiệu' parentLink='unit' />
             </div>
             <MyForm id={id}/>
         </MasterLayout>

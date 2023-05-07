@@ -846,3 +846,6 @@ CSS group add Batch
     overflow-x: hidden;
     overflow-y: auto;
 }
+table#myTable input {
+    text-align: right;
+}

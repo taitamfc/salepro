@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Icon from '../Icon';
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
@@ -140,6 +140,14 @@ function MyForm(props) {
             setProducts([]);
         }
     }
+    const handleActionChange = (id,e) => {
+        for (const product of products) {
+            if( product.id == id ){
+                product.action = e.target.value
+            }
+        }
+        caculateTotalAndSetProducts(products);
+    }
    
 
     return (
@@ -221,7 +229,7 @@ function MyForm(props) {
                                                             <td>{product.qty}</td>
                                                             <td><input min={0} className='form-control quantity' style={{width:'80px'}} type='number'  defaultValue={product.cr_qty} onChange={(e)=>handleInputChange(e,product.id,'qty')} name='qty[]'/></td>
                                                             <td>
-                                                                <Field as="select" name="action[]" value={product.action} className="form-control act-val">
+                                                                <Field as="select" name="action[]" value={product.action} onChange={(e)=>handleActionChange(product.id,e)} className="form-control act-val">
                                                                     <option value="">Giữ nguyên</option>
                                                                     <option value="-">Giảm</option>
                                                                     <option value="+">Tăng</option>
@@ -256,9 +264,19 @@ function MyForm(props) {
                     </div>
                     <div className='row'>
                         <div className='col-md-12'>
-                            <button type="submit" className="btn btn-success">
-                                <Icon fa={'fal fa-save mr-2'} /> Lưu
-                            </button>
+                            {
+                                id ? (
+                                    <>
+                                        <p>Đối với điều chỉnh, chỉ xem chứ không cập nhật. Nếu muốn cập nhật, hãy tạo phiếu mới !</p>
+                                        <Link to={'/adjustment'} className="btn btn-success">Quay lại</Link>
+                                    </>
+                                ) : (
+                                    <button type="submit" className="btn btn-success">
+                                        <Icon fa={'fal fa-save mr-2'} /> Lưu
+                                    </button>
+                                )
+                            }
+                            
                         </div>
                     </div>
                 </Form>

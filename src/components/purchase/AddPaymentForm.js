@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { NumericFormat } from 'react-number-format';
 import MyNumberFormat from '../global/MyNumberFormat';
 const rules = Yup.object().shape({
-    paying_amount: Yup.number().min(0,lang.required),
+    // paying_amount: Yup.number().min(0,lang.required),
     amount: Yup.number().min(0,lang.required)
 });
 function AddPaymentForm(props) {

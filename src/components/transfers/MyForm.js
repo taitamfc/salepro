@@ -10,6 +10,8 @@ import ProductModel from '../../models/ProductModel';
 import TransferModel from '../../models/TransferModel';
 import { SET_WAREHOUSE_ID } from '../../redux/action';
 import { useDispatch, useSelector } from 'react-redux';
+import { NumericFormat } from 'react-number-format';
+import MyNumberFormat from '../global/MyNumberFormat';
 
 const rules = Yup.object().shape({
     from_warehouse_id: Yup.number().min(1,lang.required),
@@ -99,17 +101,22 @@ function MyForm(props) {
     
 
     const handleInputChange = (e,id,type) => {
+        let the_value = e.floatValue;
+        if( typeof the_value == 'undefined' ){
+            the_value = 0;
+        }
+        console.log(the_value);
         for (const product of products) {
             if( product.id == id ){
                 switch (type) {
                     case 'qty':
-                        product.cr_qty = e.target.value;
+                        product.cr_qty = the_value;
                         break;
                     case 'price':
-                        product.cr_price = e.target.value;
+                        product.cr_price = the_value;
                         break;
                     case 'promotion_price':
-                        product.cr_promotion_price = e.target.value;
+                        product.cr_promotion_price = the_value;
                         break;
                     default:
                         break;
@@ -125,10 +132,10 @@ function MyForm(props) {
         let t_totalPromotionPrice = 0;
         let t_totalSubTotal = 0;
         for (const product of the_products) {
-            product.cr_qty = product.qty;
-            product.cr_price = product.cr_price ? product.cr_price : product.price;
-            product.cr_promotion_price = product.cr_promotion_price ? product.cr_promotion_price : 0;
-            
+            product.cr_qty = typeof product.cr_qty != 'undefined' ? product.cr_qty : product.qty;
+            product.cr_price = typeof product.cr_price != 'undefined' ? product.cr_price : product.price;
+            product.cr_promotion_price = typeof product.cr_promotion_price != 'undefined' ? product.cr_promotion_price : 0;
+
             t_totalQty += parseInt(product.cr_qty);
             t_totalPrice += parseFloat(product.cr_price);
             t_totalPromotionPrice += parseFloat(product.cr_promotion_price);
@@ -200,7 +207,7 @@ function MyForm(props) {
                         <div className='col-md-6'>
                             <div className="mb-2">
                                 <label>Phí vận chuyển</label>
-                                <Field name="shipping_cost" className="form-control"></Field>
+                                <NumericFormat thousandSeparator="," name="shipping_cost" value={formData.shipping_cost} className="form-control"/>
                                 {errors.shipping_cost && touched.shipping_cost ? (
                                     <div className='validation-invalid-label'>{errors.shipping_cost}</div>
                                 ) : null}
@@ -258,11 +265,11 @@ function MyForm(props) {
                                                                 {product.name}
                                                             </td>
                                                             <td>{product.code}</td>
-                                                            <td><input min={1} className='form-control quantity' style={{width:'80px'}} type='number'  defaultValue={product.cr_qty} onChange={(e)=>handleInputChange(e,product.id,'qty')} name='qty[]'/></td>
-                                                            <td><input min={0} type='number' className='form-control' defaultValue={product.cr_price} onChange={(e)=>handleInputChange(e,product.id,'price')} name='net_unit_cost[]'/></td>
-                                                            <td><input min={0} max={product.cr_price} type='number' className='form-control' defaultValue={product.cr_promotion_price} onChange={(e)=>handleInputChange(e,product.id,'promotion_price')} name='discount[]'/></td>
+                                                            <td><NumericFormat thousandSeparator="," type='number' className='form-control quantity' style={{width:'80px'}}   value={product.cr_qty} onValueChange={(e)=>handleInputChange(e,product.id,'qty')} name='qty[]'/></td>
+                                                            <td><NumericFormat thousandSeparator="," className='form-control' value={product.cr_price} onValueChange={(e)=>handleInputChange(e,product.id,'price')} name='net_unit_cost[]'/></td>
+                                                            <td><NumericFormat thousandSeparator="," disabled max={product.cr_price}  className='form-control' value={product.cr_promotion_price} onValueChange={(e)=>handleInputChange(e,product.id,'promotion_price')} name='discount[]'/></td>
                                                             <td className='thanh-tien'>
-                                                                { sub_total } <input type='hidden' name='subtotal[]' value={sub_total}/>
+                                                                <MyNumberFormat value={sub_total}/><input type='hidden' name='subtotal[]' value={sub_total}/>
                                                             </td>
                                                             <td className='text-center'><i className="fal fa-trash" /></td>
                                                         </tr>
@@ -282,10 +289,10 @@ function MyForm(props) {
                                                     <Field type='hidden' name='total_tax' value={0}/>
                                                     <Field type='hidden' name='paid_amount' value={0}/>
                                                 </th>
-                                                <th id="total-qty">{totalQty}</th>
-                                                <th>{totalPrice}</th>
-                                                <th id="total-discount">{totalPricePromo}</th>
-                                                <th id="total">{totalSubTotal}</th>
+                                                <th id="total-qty"><MyNumberFormat value={totalQty}/></th>
+                                                <th><MyNumberFormat value={totalPrice}/></th>
+                                                <th id="total-discount"><MyNumberFormat value={totalPricePromo}/></th>
+                                                <th id="total"><MyNumberFormat value={totalSubTotal}/></th>
                                                 <th className='text-center'>
                                                     <i className="fal fa-trash" />
                                                 </th>

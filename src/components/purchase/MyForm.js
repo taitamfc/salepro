@@ -91,17 +91,22 @@ function MyForm(props) {
     }
 
     const handleInputChange = (e,id,type) => {
+        let the_value = e.floatValue;
+        if( typeof the_value == 'undefined' ){
+            the_value = 0;
+        }
+        console.log(the_value);
         for (const product of products) {
             if( product.id == id ){
                 switch (type) {
                     case 'qty':
-                        product.cr_qty = e.target.value;
+                        product.cr_qty = the_value;
                         break;
                     case 'price':
-                        product.cr_price = e.target.value;
+                        product.cr_price = the_value;
                         break;
                     case 'promotion_price':
-                        product.cr_promotion_price = e.target.value;
+                        product.cr_promotion_price = the_value;
                         break;
                     default:
                         break;
@@ -117,9 +122,9 @@ function MyForm(props) {
         let t_totalPromotionPrice = 0;
         let t_totalSubTotal = 0;
         for (const product of the_products) {
-            product.cr_qty = product.cr_qty ? product.cr_qty : 1;
-            product.cr_price = product.cr_price ? product.cr_price : product.price;
-            product.cr_promotion_price = product.cr_promotion_price ? product.cr_promotion_price : 0;
+            product.cr_qty = typeof product.cr_qty != 'undefined' ? product.cr_qty : 1;
+            product.cr_price = typeof product.cr_price != 'undefined' ? product.cr_price : product.price;
+            product.cr_promotion_price = typeof product.cr_promotion_price != 'undefined' ? product.cr_promotion_price : product.discount;
             
             t_totalQty += parseInt(product.cr_qty);
             t_totalPrice += parseFloat(product.cr_price);
@@ -184,8 +189,8 @@ function MyForm(props) {
                         </div>
                         <div className='col-md-6'>
                             <div className="mb-2">
-                                <label>Số tiền phải thu</label>
-                                <NumericFormat name="grand_total" thousandSeparator="," className="form-control" value={totalSubTotal} onChange={handleInputChange} />
+                                <label>Số tiền phải trả</label>
+                                <NumericFormat thousandSeparator="," name="grand_total"  className="form-control" value={totalSubTotal}  />
                                 {/* <Field name="grand_total" value={totalSubTotal} className="form-control"></Field> */}
                                 {errors.grand_total && touched.grand_total ? (
                                     <div className='validation-invalid-label'>{errors.grand_total}</div>
@@ -193,7 +198,7 @@ function MyForm(props) {
                             </div>
                             <div className="mb-2">
                                 <label>Số tiền thanh toán</label>
-                                <NumericFormat name="paid_amount" thousandSeparator="," className="form-control" value={formData.paid_amount} onChange={handleInputChange} />
+                                <NumericFormat name="paid_amount" thousandSeparator="," className="form-control" value={formData.paid_amount}  />
                                 {/* <Field name="paid_amount" className="form-control"></Field> */}
                                 {errors.paid_amount && touched.paid_amount ? (
                                     <div className='validation-invalid-label'>{errors.paid_amount}</div>
@@ -243,11 +248,11 @@ function MyForm(props) {
                                                                 {product.name}
                                                             </td>
                                                             <td>{product.code}</td>
-                                                            <td><input min={1} className='form-control quantity' style={{width:'80px'}} type='number'  defaultValue={product.cr_qty} onChange={(e)=>handleInputChange(e,product.id,'qty')} name='qty[]'/></td>
+                                                            <td><NumericFormat required thousandSeparator="," isAllowed={(v) => { return v.floatValue >= 0; }} className='form-control quantity' style={{width:'80px'}} value={product.cr_qty} onValueChange={(e)=>handleInputChange(e,product.id,'qty')} name='qty[]'/></td>
                                                             <td>
-                                                                <input min={0} type='number' className='form-control' defaultValue={product.price} onChange={(e)=>handleInputChange(e,product.id,'price')} name='net_unit_cost[]'/>
+                                                                <NumericFormat thousandSeparator="," min={0} className='form-control' value={product.price} onValueChange={(e)=>handleInputChange(e,product.id,'price')} name='net_unit_cost[]'/>
                                                             </td>
-                                                            <td><input min={0} max={product.cr_price} type='number' className='form-control' defaultValue={product.cr_promotion_price} onChange={(e)=>handleInputChange(e,product.id,'promotion_price')} name='discount[]'/></td>
+                                                            <td><NumericFormat thousandSeparator="," min={0} max={product.cr_price} className='form-control' value={product.cr_promotion_price} onValueChange={(e)=>handleInputChange(e,product.id,'promotion_price')} name='discount[]'/></td>
                                                             <td className='thanh-tien'>
                                                                 <NumericFormat displayType='text' thousandSeparator=","  value={sub_total}/>
                                                                 <input type='hidden' name='subtotal[]' value={sub_total}/>

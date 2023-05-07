@@ -198,7 +198,7 @@ function Index(props) {
                             items={items}
                             loading={loading}
                             headers={['ID', 'Ngày', 'Kho hàng', 'Nhà CC', 'SP', 'SL', 'Tổng tiền', 'Đã trả', 'Nợ']}
-                            cols={['reference_no', 'created_at_format', 'warehouse_name', 'supplier_name', 'total_product', 'total_qty', 'grand_total', 'paid_amount', 'due']}
+                            cols={['reference_no', 'created_at_format', 'warehouse_name', 'supplier_name', 'total_product', 'total_qty', 'grand_total_format', 'paid_amount_format', 'due']}
                             actions={['Sửa', 'Xóa']}
                             base_link={'purchases'}
                             col_active={false}

@@ -36,7 +36,8 @@ function MyForm(props) {
     const [totalQty,setTotalQty] = useState(0);
     const [totalPrice,setTotalPrice] = useState(0);
     const [totalPricePromo,setTotalPricePromo] = useState(0);
-    const [totalSubTotal,setTotalSubTotal] = useState();
+    const [totalSubTotal,setTotalSubTotal] = useState(0);
+    const [totalGrandTotal,setTotalGrandTotal] = useState(0);
     const [shippingCost,setShippingCost] = useState(0);
 
     // contructor
@@ -72,6 +73,10 @@ function MyForm(props) {
             alert('Vui lòng chọn ít nhất 1 sản phẩm');
             return false;
         }
+        if( !values.get('warehouse_id') ){
+            alert('Vui lòng chọn kho hàng');
+            return false;
+        }
         if (id) {
             SaleModel.update(id, values).then(res => {
                 if (res.success) {
@@ -95,17 +100,19 @@ function MyForm(props) {
     }
 
     const handleInputChange = (e,id,type) => {
+        // let the_value = e.target.value;
+        let the_value = e.floatValue;
         for (const product of products) {
             if( product.id == id ){
                 switch (type) {
                     case 'qty':
-                        product.cr_qty = e.target.value;
+                        product.cr_qty = the_value;
                         break;
                     case 'price':
-                        product.cr_price = e.target.value;
+                        product.cr_price = the_value;
                         break;
                     case 'promotion_price':
-                        product.cr_promotion_price = e.target.value;
+                        product.cr_promotion_price = the_value;
                         break;
                     default:
                         break;
@@ -120,10 +127,11 @@ function MyForm(props) {
         let t_totalPrice = 0;
         let t_totalPromotionPrice = 0;
         let t_totalSubTotal = 0;
+        let totalGrandTotal = 0;
         for (const product of the_products) {
-            product.cr_qty = product.cr_qty ? product.cr_qty : 1;
-            product.cr_price = product.cr_price ? product.cr_price : product.price;
-            product.cr_promotion_price = product.cr_promotion_price ? product.cr_promotion_price : 0;
+            product.cr_qty = typeof product.cr_qty != 'undefined' ? product.cr_qty : 1;
+            product.cr_price = typeof product.cr_price != 'undefined' ? product.cr_price : product.price;
+            product.cr_promotion_price = typeof product.cr_promotion_price != 'undefined' ? product.cr_promotion_price : 0;
             
             t_totalQty += parseInt(product.cr_qty);
             t_totalPrice += parseFloat(product.cr_price);
@@ -131,11 +139,12 @@ function MyForm(props) {
             t_totalSubTotal += ( parseFloat(product.cr_price) - parseFloat(product.cr_promotion_price) ) * product.cr_qty;
         }
         shipping_cost = shipping_cost ? shipping_cost : shippingCost;
-        t_totalSubTotal += parseFloat(shipping_cost);
+        totalGrandTotal = t_totalSubTotal + parseFloat(shipping_cost);
         setTotalQty(t_totalQty);
         setTotalPrice(t_totalPrice);
         setTotalPricePromo(t_totalPromotionPrice);
         setTotalSubTotal(t_totalSubTotal);
+        setTotalGrandTotal(totalGrandTotal);
         setProducts(the_products);
     }
 
@@ -149,8 +158,10 @@ function MyForm(props) {
             setTotalSubTotal(0);
         }
         if(e.target.name == 'shipping_cost'){
-            setShippingCost(e.target.value);
-            caculateTotalAndSetProducts(products,e.target.value);
+            let feeShip = e.target.value;
+            feeShip = feeShip.replaceAll(',','');
+            setShippingCost(feeShip);
+            caculateTotalAndSetProducts(products,feeShip);
         }
     }
    
@@ -180,9 +191,6 @@ function MyForm(props) {
                                         ))
                                     }
                                 </Field>
-                                {errors.warehouse_id && touched.warehouse_id ? (
-                                    <div className='validation-invalid-label'>{errors.warehouse_id}</div>
-                                ) : null}
                             </div>
                             <div className="mb-2">
                                 <label>Tên khách hàng *</label>
@@ -211,21 +219,21 @@ function MyForm(props) {
                         <div className='col-md-6'>
                             <div className="mb-2">
                                 <label>Phí vận chuyển</label>
-                                <Field type="number" name="shipping_cost" className="form-control"></Field>
+                                <NumericFormat thousandSeparator="," name="shipping_cost" value={formData.shipping_cost} className="form-control"/>
                                 {errors.shipping_cost && touched.shipping_cost ? (
                                     <div className='validation-invalid-label'>{errors.shipping_cost}</div>
                                 ) : null}
                             </div>
                             <div className="mb-2">
                                 <label>Số tiền phải thu</label>
-                                <Field name="grand_total" value={totalSubTotal} className="form-control"></Field>
+                                <NumericFormat thousandSeparator="," name="grand_total" value={totalGrandTotal} className="form-control"/>
                                 {errors.grand_total && touched.grand_total ? (
                                     <div className='validation-invalid-label'>{errors.grand_total}</div>
                                 ) : null}
                             </div>
                             <div className="mb-2">
                                 <label>Số tiền thanh toán</label>
-                                <Field name="paid_amount" className="form-control"></Field>
+                                <NumericFormat thousandSeparator="," name="paid_amount" value={formData.paid_amount} className="form-control"/>
                                 {errors.paid_amount && touched.paid_amount ? (
                                     <div className='validation-invalid-label'>{errors.paid_amount}</div>
                                 ) : null}
@@ -280,11 +288,11 @@ function MyForm(props) {
                                                                 {product.name}
                                                             </td>
                                                             <td>{product.code}</td>
-                                                            <td><input min={1} className='form-control quantity' style={{width:'80px'}} type='number'  defaultValue={product.cr_qty} onChange={(e)=>handleInputChange(e,product.id,'qty')} name='qty[]'/></td>
-                                                            <td><input min={0} type='number' className='form-control' defaultValue={product.cr_price} onChange={(e)=>handleInputChange(e,product.id,'price')} name='net_unit_price[]'/></td>
-                                                            <td><input min={0} max={product.cr_price} type='number' className='form-control' defaultValue={product.cr_promotion_price} onChange={(e)=>handleInputChange(e,product.id,'promotion_price')} name='discount[]'/></td>
-                                                            <td className='thanh-tien'>
-                                                                { sub_total } <input type='hidden' name='subtotal[]' value={sub_total}/>
+                                                            <td><NumericFormat thousandSeparator="," min={1} className='form-control quantity' style={{width:'80px'}} value={product.cr_qty} onValueChange={(e)=>handleInputChange(e,product.id,'qty')} name='qty[]'/></td>
+                                                            <td><NumericFormat thousandSeparator="," min={0} className='form-control' value={product.cr_price} onValueChange={(e)=>handleInputChange(e,product.id,'price')} name='net_unit_price[]'/></td>
+                                                            <td><NumericFormat thousandSeparator="," min={0} max={product.cr_price} className='form-control' value={product.cr_promotion_price} onValueChange={(e)=>handleInputChange(e,product.id,'promotion_price')} name='discount[]'/></td>
+                                                            <td className='thanh-tien text-right'>
+                                                                <MyNumberFormat value={sub_total}/> <input type='hidden' name='subtotal[]' value={sub_total}/>
                                                             </td>
                                                             <td className='text-center'><i className="fal fa-trash" /></td>
                                                         </tr>
@@ -299,7 +307,7 @@ function MyForm(props) {
                                                     <Field type='hidden' name='biller_id' value={1}/>
                                                     <Field type='hidden' name='total_qty' value={totalQty}/>
                                                     <Field type='hidden' name='total_discount' value={totalPricePromo}/>
-                                                    <Field type='hidden' name='total_cost' value={totalSubTotal}/>
+                                                    <Field type='hidden' name='total_cost' value={totalGrandTotal}/>
                                                     <Field type='hidden' name='total_price' value={totalPrice}/>
                                                     <Field type='hidden' name='payment_status' value={1}/>
                                                     <Field type='hidden' name='item' value={products.length}/>
@@ -307,10 +315,10 @@ function MyForm(props) {
                                                     {/* <Field type='hidden' name='paid_amount' value={0}/> */}
                                                     <Field type='hidden' name='status' value={1}/>
                                                 </th>
-                                                <th id="total-qty"><MyNumberFormat value={totalQty}/></th>
-                                                <th><MyNumberFormat value={totalPrice}/></th>
-                                                <th id="total-discount"><MyNumberFormat value={totalPricePromo}/></th>
-                                                <th id="total"><MyNumberFormat value={totalPrice}/></th>
+                                                <th className='text-right' id="total-qty"><MyNumberFormat value={totalQty}/></th>
+                                                <th className='text-right'><MyNumberFormat value={totalPrice}/></th>
+                                                <th className='text-right' id="total-discount"><MyNumberFormat value={totalPricePromo}/></th>
+                                                <th className='text-right' id="total"><MyNumberFormat value={totalSubTotal}/></th>
                                                 <th className='text-center'>
                                                     <i className="fal fa-trash" />
                                                 </th>
