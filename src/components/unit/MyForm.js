@@ -24,7 +24,7 @@ function MyForm(props) {
         if(id){
             UnitModel.find(id).then( res => {
                 setFormData(res.data);
-            }).catch( err => { alert(err.message); });
+            }).catch( err => {  });
         }
     }, []);
 
@@ -33,12 +33,12 @@ function MyForm(props) {
             UnitModel.update(id,values).then( res => {
                 alert( lang.saved )
                 navigate('/unit')
-            }).catch( err => { alert(err.message); });
+            }).catch( err => {  });
         }else{
             UnitModel.store(values).then( res => {
                 alert( lang.saved )
                 navigate('/unit')
-            }).catch( err => { alert(err.message); });
+            }).catch( err => {  });
         }
     }
     return (

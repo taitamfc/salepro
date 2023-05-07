@@ -18,7 +18,7 @@ function ReportProfitLoss(props) {
     useEffect(() => {
         ReportModel.profitLoss(filter_home).then(res => {
             setItem(res);
-        }).catch(err => { alert(err.message); });
+        }).catch(err => {  });
     }, [filter_home]);
     return (
         <MasterLayout>

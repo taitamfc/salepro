@@ -30,7 +30,7 @@ function GenInvoice(props) {
                 let shipping_cost = res.data.shipping_cost ?? 0;
                 setShippingCost(shipping_cost);
                 caculateTotalAndSetProducts(res.data.products,shipping_cost);
-            }).catch(err => { alert(err.message); });
+            }).catch(err => {  });
         }
     }, []);
     const caculateTotalAndSetProducts = (the_products , shipping_cost = 0) => {

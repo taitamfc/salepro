@@ -37,7 +37,7 @@ function CreateFromExcelForm(props) {
     useEffect(() => {
         WarehouseModel.all({ limit: -1, onlyActive:true }).then(res => {
             setWarehouses(res.data);
-        }).catch(err => { alert(err.message); });
+        }).catch(err => {  });
 
     }, []);
     const handleSubmit = () => {
@@ -46,7 +46,7 @@ function CreateFromExcelForm(props) {
         ProductModel.processImport(values).then(res => {
             alert(lang.saved);
             navigate('/products')
-        }).catch(err => { alert(err.message); });
+        }).catch(err => {  });
     }
     return (
         <Formik

@@ -6,6 +6,7 @@ import BrandModel from '../../models/BrandModel';
 import UnitModel from '../../models/UnitModel';
 import MyModal from './MyModal';
 import { useSelector } from 'react-redux';
+import MyPagination from './MyPagination';
 
 function MyProductList(props) {
     const {show,setShowModal,modal_title,size} = props;
@@ -27,15 +28,15 @@ function MyProductList(props) {
         if(show){
             CategoryModel.all( {limit: -1, tree: true} ).then( res => {
                 setCategories(res.data);
-            }).catch( err => { alert(err.message); });
+            }).catch( err => {  });
 
             BrandModel.all( {limit: -1} ).then( res => {
                 setBranches(res.data);
-            }).catch( err => { alert(err.message); });
+            }).catch( err => {  });
 
             UnitModel.all( {limit: -1} ).then( res => {
                 setUnits(res.data);
-            }).catch( err => { alert(err.message); });
+            }).catch( err => {  });
         }
 
     }, [show]);
@@ -119,7 +120,7 @@ function MyProductList(props) {
                     items={items}
                     loading={loading}
                     headers={['Tên', 'Mã', 'Nhãn hiệu', 'Thể loại', 'Số lượng', 'Đơn vị', 'Giá']}
-                    cols={['name', 'code', 'brand_name', 'category_name', 'qty', 'unit_name', 'price']}
+                    cols={['name', 'code', 'brand_name', 'category_name', 'qty', 'unit_name', 'price_format']}
                     actions={['Sửa', 'Xóa']}
                     base_link={'products'}
                     col_action={false}
@@ -127,6 +128,7 @@ function MyProductList(props) {
                     handleSelectProducts={handleSelectProducts}
                 />
             </div>
+            <MyPagination pageData={pageData} setPage={setPage}/>
             <div className='row mt-2'>
                 <div className='col'>
                     <div className='text-right'>

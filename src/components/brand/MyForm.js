@@ -22,7 +22,7 @@ function MyForm(props) {
         if(id){
             BrandModel.find(id).then( res => {
                 setFormData(res.data);
-            }).catch( err => { alert(err.message); });
+            }).catch( err => {  });
         }
     }, []);
 
@@ -31,12 +31,12 @@ function MyForm(props) {
             BrandModel.update(id,values).then( res => {
                 alert( lang.saved )
                 navigate('/Brand')
-            }).catch( err => { alert(err.message); });
+            }).catch( err => {  });
         }else{
             BrandModel.store(values).then( res => {
                 alert( lang.saved )
                 navigate('/Brand')
-            }).catch( err => { alert(err.message); });
+            }).catch( err => {  });
         }
     }
     return (

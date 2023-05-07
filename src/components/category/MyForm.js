@@ -24,12 +24,12 @@ function MyForm(props) {
     useEffect( () => {
         CategoryModel.all().then( res => {
             setCategories(res.data);
-        }).catch( err => { alert(err.message); });
+        }).catch( err => {  });
 
         if(id){
             CategoryModel.find(id).then( res => {
                 setFormData(res.data);
-            }).catch( err => { alert(err.message); });
+            }).catch( err => {  });
         }
     }, [navigate]);
 
@@ -38,12 +38,12 @@ function MyForm(props) {
             CategoryModel.update(id,values).then( res => {
                 alert( lang.saved )
                 navigate('/categories')
-            }).catch( err => { alert(err.message); });
+            }).catch( err => {  });
         }else{
             CategoryModel.store(values).then( res => {
                 alert( lang.saved )
                 navigate('/categories')
-            }).catch( err => { alert(err.message); });
+            }).catch( err => {  });
         }
     }
     return (

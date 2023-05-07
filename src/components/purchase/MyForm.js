@@ -40,16 +40,16 @@ function MyForm(props) {
         
         WarehouseModel.all({ onlyActive: true, limit: -1 }).then(res => {
             setWarehouses(res.data);
-        }).catch(err => { alert(err.message); });
+        }).catch(err => {  });
         SupplierModel.all({ onlyActive: true, limit: -1 }).then(res => {
             setSuppliers(res.data);
-        }).catch(err => { alert(err.message); });
+        }).catch(err => {  });
 
         if (id) {
             PurchaseModel.find(id).then(res => {
                 setFormData(res.data);
                 caculateTotalAndSetProducts(res.data.products)
-            }).catch(err => { alert(err.message); });
+            }).catch(err => {  });
         }
     }, []);
 
@@ -59,7 +59,7 @@ function MyForm(props) {
         setProducts([]);
         ProductModel.all({ product_ids: product_ids.join() }).then( res => {
             caculateTotalAndSetProducts(res.data)
-        }).catch( err => { alert(err.message); });
+        }).catch( err => {  });
     }
 
     const handleSubmit = () => {
@@ -76,7 +76,7 @@ function MyForm(props) {
                 } else {
                     alert(res.msg)
                 }
-            }).catch(err => { console.log(err.message); });
+            }).catch(err => {  });
         } else {
             
             PurchaseModel.store(values).then(res => {
@@ -86,7 +86,7 @@ function MyForm(props) {
                 } else {
                     alert(res.msg)
                 }
-            }).catch(err => { console.log(err.message); });
+            }).catch(err => {  });
         }
     }
 

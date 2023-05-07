@@ -22,7 +22,7 @@ function Index(props) {
     useEffect(() => {
         WarehouseModel.all({ onlyActive: true, limit: -1 }).then(res => {
             setWarehouses(res.data);
-        }).catch(err => { alert(err.message); });
+        }).catch(err => {  });
     }, []);
 
     useEffect( () => {

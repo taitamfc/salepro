@@ -44,20 +44,20 @@ function MyForm(props) {
     useEffect( () => {
         CategoryModel.all( {limit: -1, tree: true} ).then( res => {
             setCategories(res.data);
-        }).catch( err => { alert(err.message); });
+        }).catch( err => {  });
 
         BrandModel.all( {limit: -1} ).then( res => {
             setBranches(res.data);
-        }).catch( err => { alert(err.message); });
+        }).catch( err => {  });
 
         UnitModel.all( {limit: -1} ).then( res => {
             setUnits(res.data);
-        }).catch( err => { alert(err.message); });
+        }).catch( err => {  });
 
         if(id){
             ProductModel.find(id).then( res => {
                 setFormData(res.data);
-            }).catch( err => { alert(err.message); });
+            }).catch( err => {  });
         }
     }, []);
 
@@ -70,7 +70,7 @@ function MyForm(props) {
                 }else{
                     alert( res.msg )
                 }
-            }).catch( err => { alert(err.message); });
+            }).catch( err => {  });
         }else{
             ProductModel.store(values).then( res => {
                 if(res.success){
@@ -79,7 +79,7 @@ function MyForm(props) {
                 }else{
                     alert( res.msg )
                 }
-            }).catch( err => { alert(err.message); });
+            }).catch( err => {  });
         }
     }
 

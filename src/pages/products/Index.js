@@ -32,16 +32,16 @@ function Index(props) {
     useEffect(() => {
         WarehouseModel.all({ onlyActive: true, limit: -1 }).then(res => {
             setWarehouses(res.data);
-        }).catch(err => { alert(err.message); });
+        }).catch(err => {  });
         CategoryModel.all({ onlyActive: true, limit: -1 }).then(res => {
             setCategories(res.data);
-        }).catch(err => { alert(err.message); });
+        }).catch(err => {  });
         BrandModel.all({ onlyActive: true, limit: -1 }).then(res => {
             setBranches(res.data);
-        }).catch(err => { alert(err.message); });
+        }).catch(err => {  });
         UnitModel.all( { onlyActive: true, limit: -1 }).then( res => {
             setUnits(res.data);
-        }).catch( err => { alert(err.message); });
+        }).catch( err => {  });
 
     }, []);
     useEffect(() => {

@@ -39,11 +39,11 @@ function AddPaymentForm(props) {
 
                 setProducts( res.data.products );
                 setItem( res.data );
-            }).catch(err => { alert(err.message); });
+            }).catch(err => {  });
 
             PurchaseModel.getPayments(id).then(res => {
                 setPaymentList(res.data);
-            }).catch(err => { alert(err.message); });
+            }).catch(err => {  });
         }
     }, [reloadPaymentList]);
 
@@ -64,7 +64,7 @@ function AddPaymentForm(props) {
             PurchaseModel.storePayment(id, values).then(res => {
                 setReloadPaymentList(Math.random());
                 alert(lang.saved)
-            }).catch(err => { alert(err.message); });
+            }).catch(err => {  });
         }
     }
     return (

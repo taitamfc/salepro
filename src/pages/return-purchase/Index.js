@@ -28,7 +28,7 @@ function Index(props) {
             setItems(res.data);
             setPageData(res.meta);
         }).catch( err => {
-            alert(err.message);
+            
         })
     }, [page,filter,loading]);
 
@@ -37,10 +37,10 @@ function Index(props) {
     useEffect(() => {
         WarehouseModel.all({ onlyActive: true, limit: -1 }).then(res => {
             setWarehouses(res.data);
-        }).catch(err => { alert(err.message); });
+        }).catch(err => {  });
         SupplierModel.all({ onlyActive: true, limit: -1 }).then(res => {
             setSuppliers(res.data);
-        }).catch(err => { alert(err.message); });
+        }).catch(err => {  });
 
     }, []);
 

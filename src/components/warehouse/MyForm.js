@@ -27,7 +27,7 @@ function MyForm(props) {
         if(id){
             WarehouseModel.find(id).then( res => {
                 setFormData(res.data);
-            }).catch( err => { alert(err.message); });
+            }).catch( err => {  });
         }
     }, []);
 
@@ -36,12 +36,12 @@ function MyForm(props) {
             WarehouseModel.update(id,values).then( res => {
                 alert( lang.saved )
                 navigate('/warehouse')
-            }).catch( err => { alert(err.message); });
+            }).catch( err => {  });
         }else{
             WarehouseModel.store(values).then( res => {
                 alert( lang.saved )
                 navigate('/warehouse')
-            }).catch( err => { alert(err.message); });
+            }).catch( err => {  });
         }
     }
     return (

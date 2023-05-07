@@ -47,14 +47,14 @@ function MyForm(props) {
         
         WarehouseModel.all({ onlyActive: true, limit: -1 }).then(res => {
             setWarehouses(res.data);
-        }).catch(err => { alert(err.message); });
+        }).catch(err => {  });
 
         if (id) {
             SaleModel.find(id).then(res => {
                 setFormData(res.data);
                 dispatch({ type: SET_WAREHOUSE_ID, payload: res.data.warehouse_id });
                 caculateTotalAndSetProducts(res.data.products);
-            }).catch(err => { alert(err.message); });
+            }).catch(err => {  });
         }
     }, []);
 
@@ -64,7 +64,7 @@ function MyForm(props) {
         setProducts([]);
         ProductModel.all({ product_ids: product_ids.join(), warehouse_id: store_warehouse_id }).then( res => {
             caculateTotalAndSetProducts(res.data);
-        }).catch( err => { alert(err.message); });
+        }).catch( err => {  });
     }
 
     const handleSubmit = () => {
@@ -85,7 +85,7 @@ function MyForm(props) {
                 } else {
                     alert(res.msg)
                 }
-            }).catch(err => { console.log(err.message); });
+            }).catch(err => {  });
         } else {
             
             SaleModel.store(values).then(res => {
@@ -95,7 +95,7 @@ function MyForm(props) {
                 } else {
                     alert(res.msg)
                 }
-            }).catch(err => { console.log(err.message); });
+            }).catch(err => {  });
         }
     }
 

@@ -26,7 +26,7 @@ function MyForm(props) {
         if(id){
             AccountModel.find(id).then( res => {
                 setFormData(res.data);
-            }).catch( err => { alert(err.message); });
+            }).catch( err => {  });
         }
     }, []);
 
@@ -35,12 +35,12 @@ function MyForm(props) {
             AccountModel.update(id,values).then( res => {
                 alert( lang.saved )
                 navigate('/accounts')
-            }).catch( err => { alert(err.message); });
+            }).catch( err => {  });
         }else{
             AccountModel.store(values).then( res => {
                 alert( lang.saved )
                 navigate('/accounts')
-            }).catch( err => { alert(err.message); });
+            }).catch( err => {  });
         }
     }
     return (

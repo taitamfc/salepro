@@ -22,7 +22,7 @@ function MyForm(props) {
         if(id){
             SupplierModel.find(id).then( res => {
                 setFormData(res.data);
-            }).catch( err => { alert(err.message); });
+            }).catch( err => {  });
         }
     }, []);
 
@@ -31,12 +31,12 @@ function MyForm(props) {
             SupplierModel.update(id,values).then( res => {
                 alert( lang.saved )
                 navigate('/supplier')
-            }).catch( err => { alert(err.message); });
+            }).catch( err => {  });
         }else{
             SupplierModel.store(values).then( res => {
                 alert( lang.saved )
                 navigate('/supplier')
-            }).catch( err => { alert(err.message); });
+            }).catch( err => {  });
         }
     }
     return (
