@@ -93,12 +93,12 @@ function ReportDue(props) {
                             <div className='card-header p-0 '>
                                 <ul className='nav nav-tabs nav-tabs-highlight mb-0 navTabTopFilter'>
                                     <li className='nav-item'>
-                                        <Link onClick={ () => handleChangeTab('index') } className={activeTab == 'index' ? 'nav-link active px-3' : 'nav-link px-3'}>
+                                        <Link onClick={ () => handleChangeTab('index') } className={activeTab === 'index' ? 'nav-link active px-3' : 'nav-link px-3'}>
                                             Bộ lọc
                                         </Link>
                                     </li>
                                     {/* <li className='nav-item'>
-                                        <Link onClick={ () => handleChangeTab('trash') } className={activeTab == 'trash' ? 'nav-link active px-3' : 'nav-link px-3'}>
+                                        <Link onClick={ () => handleChangeTab('trash') } className={activeTab === 'trash' ? 'nav-link active px-3' : 'nav-link px-3'}>
                                             Đã xóa
                                         </Link>
                                     </li> */}
